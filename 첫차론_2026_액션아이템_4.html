@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>첫차론 2026 액션 아이템</title>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg: #0c0e14;
+    --surface: #141720;
+    --surface2: #1c2030;
+    --border: #252a3a;
+    --accent: #4f7cff;
+    --accent2: #7b5cfa;
+    --green: #22d3a0;
+    --red: #ff5c6a;
+    --yellow: #ffd060;
+    --text: #e8eaf0;
+    --text-dim: #8890a8;
+    --text-muted: #4a5270;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #0c0e14 0%, #111830 50%, #0d1120 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(79,124,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: 10%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(123,92,250,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(79,124,255,0.12);
+    border: 1px solid rgba(79,124,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .header-badge::before { content: '●'; font-size: 7px; }
+  h1 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #b0bce0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .header-sub {
+    font-size: 14px;
+    color: var(--text-dim);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .header-sub span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-sub span::before { content: '·'; color: var(--text-muted); }
+
+  /* NAV */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-inner a {
+    display: block;
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-inner a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+  /* MAIN */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 56px;
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .section-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(79,124,255,0.1);
+    border: 1px solid rgba(79,124,255,0.2);
+    border-radius: 4px;
+    padding: 3px 8px;
+    letter-spacing: 0.05em;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* SUMMARY BOX */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(79,124,255,0.08) 0%, rgba(123,92,250,0.08) 100%);
+    border: 1px solid rgba(79,124,255,0.25);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+  }
+  .summary-box p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #c8d0e8;
+  }
+  .summary-box strong { color: var(--text); }
+
+  /* TAKEAWAY LIST */
+  .takeaway-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .takeaway-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+  .takeaway-list li:hover { border-color: rgba(79,124,255,0.3); }
+  .tnum {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(79,124,255,0.12);
+    border-radius: 4px;
+    padding: 2px 7px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* EVIDENCE CARDS */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 640px) { .evidence-grid { grid-template-columns: 1fr; } }
+  .evidence-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .evidence-card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .evidence-card h3::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .evidence-card p, .evidence-card li {
+    font-size: 13.5px;
+    color: #b0b8d0;
+    line-height: 1.65;
+  }
+  .evidence-card ul { list-style: none; padding: 0; }
+  .evidence-card ul li { padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .evidence-card ul li:last-child { border-bottom: none; }
+  .evidence-card ul li::before { content: '→ '; color: var(--accent); }
+  .insight-box {
+    background: rgba(79,124,255,0.07);
+    border: 1px solid rgba(79,124,255,0.18);
+    border-radius: 7px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #b8c4e0;
+    font-style: italic;
+  }
+
+  /* CHART SECTION */
+  .chart-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .chart-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .chart-section img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  .chart-caption {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* METRICS */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 640px) { .metrics-row { grid-template-columns: 1fr 1fr; } }
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .metric-value {
+    font-family: 'Space Mono', monospace;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .metric-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+  .up { color: var(--green); }
+  .down { color: var(--red); }
+  .neutral { color: var(--yellow); }
+
+  /* TABLE */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead { background: var(--surface2); }
+  thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody td {
+    padding: 12px 16px;
+    color: #b0b8d0;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  td strong { color: var(--text); }
+
+  /* STRATEGY GRID */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 640px) { .strategy-grid { grid-template-columns: 1fr; } }
+  .strategy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .strategy-card:hover { border-color: rgba(79,124,255,0.35); transform: translateY(-2px); }
+  .strategy-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .strategy-card:hover::before { opacity: 1; }
+  .strategy-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .tag-crm { background: rgba(79,124,255,0.15); color: var(--accent); }
+  .tag-product { background: rgba(34,211,160,0.12); color: var(--green); }
+  .tag-strategy { background: rgba(123,92,250,0.15); color: var(--accent2); }
+  .tag-ops { background: rgba(255,208,96,0.12); color: var(--yellow); }
+  .strategy-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .strategy-card p, .strategy-card li {
+    font-size: 13px;
+    color: #a0a8c0;
+    line-height: 1.6;
+  }
+  .strategy-card ul { list-style: none; padding: 0; margin-top: 8px; }
+  .strategy-card ul li { padding: 3px 0; padding-left: 14px; position: relative; }
+  .strategy-card ul li::before { content: '·'; position: absolute; left: 2px; color: var(--accent); }
+
+  /* CRM TABLE */
+  .crm-status {
+    margin-bottom: 28px;
+  }
+  .crm-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 140px 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .crm-item { grid-template-columns: 1fr; } }
+  .crm-trigger {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim);
+  }
+  .crm-trigger span {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  .crm-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .crm-body p { font-size: 13px; color: #a0a8c0; }
+  .crm-kpi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .kpi-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .kpi-open { background: rgba(34,211,160,0.12); color: var(--green); }
+  .kpi-cvr { background: rgba(79,124,255,0.12); color: var(--accent); }
+  .kpi-zero { background: rgba(255,92,106,0.1); color: var(--red); }
+
+  /* ALERT */
+  .alert {
+    display: flex;
+    gap: 12px;
+    background: rgba(255,208,96,0.06);
+    border: 1px solid rgba(255,208,96,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: #d0c090;
+    line-height: 1.6;
+  }
+  .alert::before { content: '🚨'; flex-shrink: 0; }
+  .alert-green {
+    background: rgba(34,211,160,0.06);
+    border-color: rgba(34,211,160,0.2);
+    color: #90d0b8;
+  }
+  .alert-green::before { content: '💡'; }
+
+  /* OPERATION TABLE */
+  .op-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 640px) { .op-compare { grid-template-columns: 1fr; } }
+  .op-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .op-card .op-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .op-card ul { list-style: none; padding: 0; }
+  .op-card ul li {
+    font-size: 13px;
+    color: #a0a8c0;
+    padding: 5px 0;
+    padding-left: 14px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .op-card ul li:last-child { border-bottom: none; }
+  .op-card ul li::before { content: '·'; position: absolute; left: 2px; }
+  .connected { border-top: 3px solid var(--accent); }
+  .connected .op-title { color: var(--accent); }
+  .unconnected { border-top: 3px solid var(--accent2); }
+  .unconnected .op-title { color: var(--accent2); }
+
+  /* MESSAGE PREVIEW */
+  .msg-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #c0c8e0;
+    line-height: 1.6;
+    margin-top: 8px;
+    position: relative;
+  }
+  .msg-box::before {
+    content: '💬';
+    position: absolute;
+    top: -10px; left: 10px;
+    font-size: 14px;
+    background: var(--surface2);
+    padding: 0 4px;
+  }
+
+  /* SEGMENT TABLE */
+  .segment-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    overflow-x: auto;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* ACTION ITEMS */
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .action-item {
+    display: flex;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    transition: border-color 0.2s;
+  }
+  .action-item:hover { border-color: var(--accent); }
+  .action-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    background: rgba(79,124,255,0.1);
+  }
+  .action-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .action-content p { font-size: 13px; color: #a0a8c0; line-height: 1.55; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px 32px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Color tags for 연동/미연동 */
+  .tag-connected { color: var(--accent); font-weight:700; }
+  .tag-unconnected { color: var(--accent2); font-weight:700; }
+  
+  /* Metric color coding */
+  .metric-group { margin-bottom: 20px; }
+  .metric-group-label {
+    font-size: 12px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
+    margin-bottom: 10px; display: inline-block;
+  }
+  .mgc { background: rgba(79,124,255,0.12); color: var(--accent); border: 1px solid rgba(79,124,255,0.25); }
+  .mgu { background: rgba(123,92,250,0.12); color: var(--accent2); border: 1px solid rgba(123,92,250,0.25); }
+  
+  .metric-row-group {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;
+  }
+  .metric-card.c-border { border-color: rgba(79,124,255,0.35); }
+  .metric-card.u-border { border-color: rgba(123,92,250,0.35); }
+  
+  /* Yellow highlight for bold in takeaways */
+  .yl { background: rgba(255,208,96,0.18); color: #ffe580; border-radius: 3px; padding: 0 3px; font-weight: 700; }
+  
+  /* Table style for campaign */
+  .campaign-table { width:100%; border-collapse:collapse; font-size:13px; margin-top:12px; }
+  .campaign-table th { background: rgba(79,124,255,0.12); color: var(--text-dim); font-weight:600; padding:8px 12px; text-align:left; border:1px solid var(--border); font-size:12px; }
+  .campaign-table td { padding: 8px 12px; border:1px solid var(--border); color: var(--text); vertical-align:top; line-height:1.5; }
+  .campaign-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .campaign-table .field-label { color: var(--text-dim); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:2px; }
+  
+  /* Op-compare section enhancements */
+  .op-section { margin-bottom: 28px; }
+  .op-section-title {
+    font-size:13px; font-weight:700; color: var(--text-dim); 
+    text-transform:uppercase; letter-spacing:.06em; 
+    margin-bottom:10px; padding: 6px 12px;
+    background: var(--surface2); border-radius:6px; border-left: 3px solid var(--yellow);
+  }
+  
+  /* Retrospective table */
+  .retro-table { width:100%; border-collapse:collapse; font-size:13px; margin: 12px 0 16px; }
+  .retro-table th { background: rgba(255,208,96,0.08); color: var(--yellow); font-weight:600; padding:8px 12px; text-align:center; border:1px solid rgba(255,208,96,0.2); font-size:12px; }
+  .retro-table td { padding:8px 12px; border:1px solid var(--border); text-align:center; color:var(--text); }
+  .retro-table tr:first-child td { font-weight:600; color:var(--text-dim); }
+  
+  /* [연관] badge */
+  .related-badge {
+    display:inline-block; background: rgba(34,211,160,0.12); 
+    color: var(--green); border: 1px solid rgba(34,211,160,0.3);
+    border-radius:4px; padding:2px 8px; font-size:11px; font-weight:700;
+    margin-bottom:10px; letter-spacing:.04em;
+  }
+  
+  /* Subsection h3 same level as evidence */
+  .sub-h3 {
+    font-size:15px; font-weight:700; color:var(--text-dim); 
+    text-transform:uppercase; letter-spacing:.06em; margin:28px 0 14px;
+  }
+  
+  /* Campaign status simplified */
+  .crm-item .crm-kpi { display:none; }
+
+
+  /* ========== 추가 CSS ========== */
+
+  /* Category-grouped action list */
+  .action-category { margin-bottom: 28px; }
+  .action-cat-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .action-cat-label span {
+    font-family: 'Space Mono', monospace; font-size: 11px;
+    background: rgba(79,124,255,0.12); color: var(--accent);
+    border: 1px solid rgba(79,124,255,0.2); border-radius: 4px; padding: 2px 8px;
+  }
+  .action-item-v2 {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 16px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 8px; transition: border-color 0.2s;
+  }
+  .action-item-v2:hover { border-color: rgba(79,124,255,0.3); }
+  .action-num {
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+    color: var(--accent2); background: rgba(123,92,250,0.1);
+    border: 1px solid rgba(123,92,250,0.2); border-radius: 4px;
+    padding: 2px 7px; flex-shrink: 0; margin-top: 2px;
+  }
+  .action-item-v2 h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+  .action-item-v2 p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+  /* SVG Chart wrapper */
+  .chart-wrap {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .chart-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .chart-sub { font-size: 11px; color: var(--text-muted); margin-bottom: 16px; }
+  .chart-legend { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-dim); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Campaign card style for PART2 actions */
+  .camp-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px; margin-bottom: 12px;
+  }
+  .camp-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .camp-title { font-size: 15px; font-weight: 700; color: var(--text); }
+  .camp-rows { display: flex; flex-direction: column; gap: 8px; }
+  .camp-row { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .camp-key {
+    min-width: 90px; padding: 8px 12px;
+    background: var(--surface2); font-size: 11px; font-weight: 700;
+    color: var(--text-dim); text-transform: uppercase; letter-spacing: .04em;
+    display: flex; align-items: flex-start; border-right: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .camp-val { padding: 8px 12px; font-size: 13px; color: var(--text); line-height: 1.5; flex: 1; }
+  .camp-val .msg { background: var(--surface2); border-radius:4px; padding:4px 8px; font-size:12px; margin-top:4px; color:var(--text-dim); display:block; }
+
+  /* metric label white */
+  .metric-value { color: #fff !important; }
+
+  /* evidence depth */
+  .evidence-section { margin-bottom: 28px; }
+  .evidence-section-title {
+    font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color: var(--text-dim); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .evidence-section-title::before {
+    content: ''; display: block; width: 3px; height: 14px;
+    background: var(--accent); border-radius: 2px;
+  }
+
+
+  /* v3 additional */
+  .highlight-box {
+    background: rgba(255,208,96,0.08); border: 1px solid rgba(255,208,96,0.3);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 16px;
+    font-size: 14px; color: var(--text); line-height: 1.7;
+  }
+  .highlight-box strong { color: var(--yellow); }
+
+
+  /* PART5 BM tags */
+  .bm-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .bm-tagi  { background: rgba(34,211,160,0.12); color: #22d3a0; border: 1px solid rgba(34,211,160,0.3); }
+  .bm-ad    { background: rgba(123,92,250,0.12); color: #a090ff; border: 1px solid rgba(123,92,250,0.3); }
+  .bm-lease { background: rgba(79,124,255,0.12); color: #4f7cff; border: 1px solid rgba(79,124,255,0.3); }
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-badge">CRM Growth Report</div>
+    <h1>첫차론 2026 액션 아이템</h1>
+    <div class="header-sub">
+      <span>CTA 테스트 &amp; 미연동 개선</span>
+      <span>리스·론 유저 분리 전략</span>
+      <span>CRM 캠페인 현황 및 개선</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#part1">PART 1 · CTA 테스트</a>
+    <a href="#part2">PART 2 · 리스 vs 론</a>
+    <a href="#part3">PART 3 · CRM 현황</a>
+    <a href="#part4">PART 4 · 액션 아이템</a>
+    <a href="#part5">PART 5 · BM 연결 플로우</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ======== PART 1 ======== -->
+<section class="section" id="part1">
+  <div class="section-header">
+    <span class="section-num">PART 01</span>
+    <h2>CTA 테스트와 미연동 케이스 개선</h2>
+  </div>
+
+  <!-- 분석 배경 -->
+  <h3 class="sub-h3">분석 배경</h3>
+  <div class="summary-box">
+    <p>• Main view CTA 데이터 리뷰 시, 차량 연동/미연동 케이스 간 성과 격차가 확대되는 현상 포착<br>
+    • 2025년 하반기 이후 미연동 케이스의 CTR이 지속 하락하고 있으며, 이에 대한 원인 분석 및 케이스별 운영 전략 분리 필요성 대두</p>
+  </div>
+  
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+  <div class="chart-wrap">
+    <div class="chart-title">💔 차량 미연동</div>
+    <div class="chart-sub">%Main View 상승 | CTR 감소 | CVR 감소</div>
+    <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <line x1="40" y1="10" x2="40" y2="115" stroke="#252a3a" stroke-width="1"/>
+      <line x1="40" y1="115" x2="310" y2="115" stroke="#252a3a" stroke-width="1"/>
+      <line x1="40" y1="40" x2="310" y2="40" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="40" y1="65" x2="310" y2="65" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="40" y1="90" x2="310" y2="90" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <text x="80"  y="128" font-size="9" fill="#4a5270" text-anchor="middle">May</text>
+      <text x="145" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Jul</text>
+      <text x="210" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Sep</text>
+      <text x="270" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Jan'26</text>
+      <text x="36" y="13" font-size="8" fill="#4a5270" text-anchor="end">High</text>
+      <text x="36" y="118" font-size="8" fill="#4a5270" text-anchor="end">Low</text>
+      <polyline points="55,95 80,90 110,85 140,82 170,78 200,76 230,73 260,70 290,66"
+        fill="none" stroke="#7b5cfa" stroke-width="2" stroke-dasharray="5,3" stroke-linejoin="round"/>
+      <polyline points="55,45 80,47 110,50 140,55 170,60 200,65 230,70 260,74 290,78"
+        fill="none" stroke="#ff5c6a" stroke-width="2" stroke-linejoin="round"/>
+      <polyline points="55,52 80,55 110,60 140,66 170,72 200,78 230,83 260,88 290,93"
+        fill="none" stroke="#ffa040" stroke-width="2" stroke-linejoin="round" stroke-dasharray="2,2"/>
+      <text x="293" y="66" font-size="8" fill="#7b5cfa">↑</text>
+      <text x="293" y="80" font-size="8" fill="#ff5c6a">↓</text>
+      <text x="293" y="95" font-size="8" fill="#ffa040">↓</text>
+    </svg>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#7b5cfa"></div>%Main View (상승)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff5c6a"></div>CTR (감소)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ffa040"></div>CVR (감소)</div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:var(--red);font-weight:600;">유입량 대비 전환 우하향</div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-title">❤️ 차량 연동</div>
+    <div class="chart-sub">%Main View 상승 | CTR 상승 | CVR 상승</div>
+    <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <line x1="40" y1="10" x2="40" y2="115" stroke="#252a3a" stroke-width="1"/>
+      <line x1="40" y1="115" x2="310" y2="115" stroke="#252a3a" stroke-width="1"/>
+      <line x1="40" y1="40" x2="310" y2="40" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="40" y1="65" x2="310" y2="65" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="40" y1="90" x2="310" y2="90" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <text x="80"  y="128" font-size="9" fill="#4a5270" text-anchor="middle">May</text>
+      <text x="145" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Jul</text>
+      <text x="210" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Sep</text>
+      <text x="270" y="128" font-size="9" fill="#4a5270" text-anchor="middle">Jan'26</text>
+      <text x="36" y="13" font-size="8" fill="#4a5270" text-anchor="end">High</text>
+      <text x="36" y="118" font-size="8" fill="#4a5270" text-anchor="end">Low</text>
+      <polyline points="55,90 80,87 110,84 140,80 170,76 200,73 230,70 260,67 290,64"
+        fill="none" stroke="#7b5cfa" stroke-width="2" stroke-dasharray="5,3" stroke-linejoin="round"/>
+      <polyline points="55,72 80,71 110,69 140,67 170,65 200,63 230,61 260,59 290,57"
+        fill="none" stroke="#22d3a0" stroke-width="2" stroke-linejoin="round"/>
+      <polyline points="55,80 80,78 110,76 140,74 170,71 200,68 230,65 260,62 290,59"
+        fill="none" stroke="#4f7cff" stroke-width="2" stroke-linejoin="round"/>
+      <text x="293" y="62" font-size="8" fill="#7b5cfa">↑</text>
+      <text x="293" y="55" font-size="8" fill="#22d3a0">↑</text>
+      <text x="293" y="57" font-size="8" fill="#4f7cff"></text>
+    </svg>
+    <div class="chart-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#7b5cfa"></div>%Main View (상승)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#22d3a0"></div>CTR (상승)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#4f7cff"></div>CVR (상승)</div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:var(--green);font-weight:600;">전 지표 완만한 우상향</div>
+  </div>
+</div>
+
+
+  <!-- 분석 결론 요약 -->
+  <h3 class="sub-h3" style="margin-top:28px;">분석 결론 요약</h3>
+  <ul class="takeaway-list" style="margin-bottom:28px;">
+    <li>
+      <span class="tnum">①</span>
+      <span>미연동 케이스의 CTR 하락은 <span class="yl">유저 클릭 의향 악화</span>에서 기인. CTA 에셋 단기 로테이션과 <span class="yl">클릭 • 신청 구간 개선</span>이 가장 빠른 볼륨 레버</span>
+    </li>
+    <li>
+      <span class="tnum">②</span>
+      <span>낮은 CTR / 높은 CVR 상황인 <span class="yl">❤️ 연동 케이스</span> — (소수 최적화) <span class="yl">2개 고정 + 깊은 최적화</span></span>
+    </li>
+    <li>
+      <span class="tnum">③</span>
+      <span>높은 CTR / 낮은 CVR 상황인 <span class="yl">💔 미연동 케이스</span> — (다수 롤링) <span class="yl">4개 이상 + 신선도 중심 교체 + 후행 퍼널 개선</span></span>
+    </li>
+  </ul>
+
+
+
+  <!-- Top Takeawaysys -->
+  <h3 class="sub-h3">Top Takeaways</h3>
+  <ul class="takeaway-list">
+    <li><span class="tnum">T1</span>미연동 CTR 하락은 메시지/구성에 대한 <span class="yl">반응 둔화</span>에서 기인 (시장 분기 요인보다 강함)</li>
+    <li><span class="tnum">T2</span>4차 신규 CTA는 <span class="yl">Punch-through(클릭 • Step1 전환)를 개선하지 못함</span> — CTR &amp; CVR 동반 하락</li>
+    <li><span class="tnum">T3</span>툴팁은 <span class="yl">❤️ 연동 리스 케이스에서만 유의미</span> — 💔 미연동에서는 효과 상쇄</li>
+    <li><span class="tnum">T4</span>소수 에셋 최적화 운영은 <span class="yl">❤️ 연동 케이스에서 ROI 높음</span></li>
+    <li><span class="tnum">T5</span>미연동 주간 신청건수 +20 회복의 핵심 레버는 <span class="yl">[클릭 • STEP1] 구간</span></li>
+  </ul>
+
+  <!-- Evidence 상세 -->
+  <h3 class="sub-h3">Evidence 상세</h3>
+
+  <div class="evidence-section">
+    <div class="evidence-section-title">미연동 CTR 하락</div>
+    <div class="evidence-card">
+      <div class="insight-box">시장 분기별 트렌드 단일 요인보다 메시지/구성에 대한 반응 둔화</div>
+      <ul>
+        <li>💔 미연동 CTR: 27.2% 고점에서 21.7%로 하락 후 22% 구간 답보</li>
+        <li>❤️ 연동 CTR: 동기간 9~10%대, 구조적 붕괴 없음</li>
+        <li>CTB ↔ 첫차론 상호 전환 볼륨: 12월 중순 이후 동반 급락 패턴 뚜렷하지 않음</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="evidence-section">
+    <div class="evidence-section-title">4차 CTA 효율</div>
+    <div class="evidence-card">
+      <div class="insight-box">4차 테스트는 3차 대비 전환 CVR 개선되지 않았으며, CTR &amp; CVR 모두 전고점 뛰어넘지 못함</div>
+      <ul>
+        <li>클릭 • 신청(Punch-through) 전환율 기준으로 악화</li>
+        <li>케이스 공통 관성 클릭(높은 CTR / 낮은 CVR) 유지</li>
+        <li>CTR &amp; 전환 지표 3차 대비 동반 하락</li>
+      </ul>
+      
+<div class="chart-wrap" style="margin-top:12px;">
+  <div class="chart-title">❤️ 차량 연동 — AS IS~4차 CTR / CVR 추이</div>
+  <div class="chart-sub">CVR = COMPLETE / CTA CLICK</div>
+  <svg viewBox="0 0 540 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+    <line x1="55" y1="10" x2="55" y2="145" stroke="#252a3a" stroke-width="1"/>
+    <line x1="55" y1="145" x2="520" y2="145" stroke="#252a3a" stroke-width="1"/>
+    <line x1="55" y1="40"  x2="520" y2="40"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <line x1="55" y1="75"  x2="520" y2="75"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <line x1="55" y1="110" x2="520" y2="110" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <!-- Y labels -->
+    <text x="50" y="43"  font-size="9" fill="#4a5270" text-anchor="end">30%</text>
+    <text x="50" y="78"  font-size="9" fill="#4a5270" text-anchor="end">20%</text>
+    <text x="50" y="113" font-size="9" fill="#4a5270" text-anchor="end">10%</text>
+    <text x="50" y="148" font-size="9" fill="#4a5270" text-anchor="end">0%</text>
+    <!-- X labels -->
+    <text x="115" y="160" font-size="10" fill="#8890a8" text-anchor="middle">AS IS</text>
+    <text x="220" y="160" font-size="10" fill="#8890a8" text-anchor="middle">1차</text>
+    <text x="315" y="160" font-size="10" fill="#8890a8" text-anchor="middle">2차</text>
+    <text x="405" y="160" font-size="10" fill="#8890a8" text-anchor="middle">3차</text>
+    <text x="490" y="160" font-size="10" fill="#8890a8" text-anchor="middle">4차</text>
+    <!-- CTR bars (연동 CTR 낮음 5~10%) -->
+    <rect x="80"  y="116" width="32" height="29" rx="2" fill="rgba(79,124,255,0.55)"/>
+    <rect x="185" y="119" width="32" height="26" rx="2" fill="rgba(79,124,255,0.55)"/>
+    <rect x="280" y="121" width="32" height="24" rx="2" fill="rgba(79,124,255,0.6)"/>
+    <rect x="370" y="118" width="32" height="27" rx="2" fill="rgba(79,124,255,0.75)"/>
+    <rect x="460" y="122" width="32" height="23" rx="2" fill="rgba(79,124,255,0.5)"/>
+    <!-- CTR % labels -->
+    <text x="96"  y="113" font-size="8" fill="#4f7cff" text-anchor="middle">7%</text>
+    <text x="201" y="116" font-size="8" fill="#4f7cff" text-anchor="middle">6%</text>
+    <text x="296" y="118" font-size="8" fill="#4f7cff" text-anchor="middle">6%</text>
+    <text x="386" y="115" font-size="8" fill="#4f7cff" text-anchor="middle">7%</text>
+    <text x="476" y="119" font-size="8" fill="#4f7cff" text-anchor="middle">6%</text>
+    <!-- CVR bars (연동 CVR 높음 25~30%) -->
+    <rect x="115" y="43" width="32" height="102" rx="2" fill="rgba(34,211,160,0.55)"/>
+    <rect x="220" y="40" width="32" height="105" rx="2" fill="rgba(34,211,160,0.55)"/>
+    <rect x="315" y="45" width="32" height="100" rx="2" fill="rgba(34,211,160,0.6)"/>
+    <rect x="405" y="38" width="32" height="107" rx="2" fill="rgba(34,211,160,0.75)"/>
+    <rect x="490" y="46" width="32" height="99" rx="2" fill="rgba(34,211,160,0.5)"/>
+    <!-- CVR % labels -->
+    <text x="131" y="39" font-size="8" fill="#22d3a0" text-anchor="middle">26%</text>
+    <text x="236" y="36" font-size="8" fill="#22d3a0" text-anchor="middle">26%</text>
+    <text x="331" y="41" font-size="8" fill="#22d3a0" text-anchor="middle">25%</text>
+    <text x="421" y="34" font-size="8" fill="#22d3a0" text-anchor="middle">27%</text>
+    <text x="506" y="42" font-size="8" fill="#22d3a0" text-anchor="middle">25%</text>
+    <!-- Peak marker on 3차 -->
+    <polygon points="421,22 415,14 427,14" fill="#ffd060" opacity="0.9"/>
+    <text x="421" y="12" font-size="8" fill="#ffd060" text-anchor="middle">전고점</text>
+    <!-- Trend lines -->
+    <polyline points="96,116 201,119 296,121 386,118 476,122"
+      fill="none" stroke="#4f7cff" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+    <polyline points="131,43 236,40 331,45 421,38 506,46"
+      fill="none" stroke="#22d3a0" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+    <!-- Legend -->
+    <rect x="57" y="168" width="10" height="8" rx="1" fill="rgba(79,124,255,0.7)"/>
+    <text x="71" y="176" font-size="9" fill="#8890a8">CTR (연동)</text>
+    <rect x="150" y="168" width="10" height="8" rx="1" fill="rgba(34,211,160,0.7)"/>
+    <text x="164" y="176" font-size="9" fill="#8890a8">CVR — 구조적으로 높음 유지</text>
+  </svg>
+</div>
+
+      
+<div class="chart-wrap" style="margin-top:12px;">
+  <div class="chart-title">💔 차량 미연동 — AS IS~4차 CTR / CVR 추이</div>
+  <div class="chart-sub">CVR = COMPLETE / CTA CLICK</div>
+  <svg viewBox="0 0 540 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+    <line x1="55" y1="10" x2="55" y2="145" stroke="#252a3a" stroke-width="1"/>
+    <line x1="55" y1="145" x2="520" y2="145" stroke="#252a3a" stroke-width="1"/>
+    <line x1="55" y1="40"  x2="520" y2="40"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <line x1="55" y1="75"  x2="520" y2="75"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <line x1="55" y1="110" x2="520" y2="110" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="4,3"/>
+    <text x="50" y="43"  font-size="9" fill="#4a5270" text-anchor="end">30%</text>
+    <text x="50" y="78"  font-size="9" fill="#4a5270" text-anchor="end">20%</text>
+    <text x="50" y="113" font-size="9" fill="#4a5270" text-anchor="end">10%</text>
+    <text x="50" y="148" font-size="9" fill="#4a5270" text-anchor="end">0%</text>
+    <text x="115" y="160" font-size="10" fill="#8890a8" text-anchor="middle">AS IS</text>
+    <text x="220" y="160" font-size="10" fill="#8890a8" text-anchor="middle">1차</text>
+    <text x="315" y="160" font-size="10" fill="#8890a8" text-anchor="middle">2차</text>
+    <text x="405" y="160" font-size="10" fill="#8890a8" text-anchor="middle">3차</text>
+    <text x="490" y="160" font-size="10" fill="#8890a8" text-anchor="middle">4차 ▼</text>
+    <!-- CTR bars (미연동 CTR 높음 22~28%) -->
+    <rect x="80"  y="42" width="32" height="103" rx="2" fill="rgba(123,92,250,0.5)"/>
+    <rect x="185" y="37" width="32" height="108" rx="2" fill="rgba(123,92,250,0.5)"/>
+    <rect x="280" y="44" width="32" height="101" rx="2" fill="rgba(123,92,250,0.55)"/>
+    <rect x="370" y="39" width="32" height="106" rx="2" fill="rgba(123,92,250,0.7)"/>
+    <rect x="460" y="50" width="32" height="95"  rx="2" fill="rgba(123,92,250,0.4)"/>
+    <text x="96"  y="38" font-size="8" fill="#a090ff" text-anchor="middle">26%</text>
+    <text x="201" y="33" font-size="8" fill="#a090ff" text-anchor="middle">27%</text>
+    <text x="296" y="40" font-size="8" fill="#a090ff" text-anchor="middle">25%</text>
+    <text x="386" y="35" font-size="8" fill="#a090ff" text-anchor="middle">27%</text>
+    <text x="476" y="46" font-size="8" fill="#a090ff" text-anchor="middle">24%</text>
+    <!-- CVR bars (미연동 CVR 낮음 13~17%) -->
+    <rect x="115" y="100" width="32" height="45" rx="2" fill="rgba(255,92,106,0.5)"/>
+    <rect x="220" y="97"  width="32" height="48" rx="2" fill="rgba(255,92,106,0.5)"/>
+    <rect x="315" y="102" width="32" height="43" rx="2" fill="rgba(255,92,106,0.55)"/>
+    <rect x="405" y="99"  width="32" height="46" rx="2" fill="rgba(255,92,106,0.7)"/>
+    <rect x="490" y="107" width="32" height="38" rx="2" fill="rgba(255,92,106,0.35)"/>
+    <text x="131" y="96" font-size="8" fill="#ff5c6a" text-anchor="middle">15%</text>
+    <text x="236" y="93" font-size="8" fill="#ff5c6a" text-anchor="middle">16%</text>
+    <text x="331" y="98" font-size="8" fill="#ff5c6a" text-anchor="middle">15%</text>
+    <text x="421" y="95" font-size="8" fill="#ff5c6a" text-anchor="middle">16%</text>
+    <text x="506" y="103" font-size="8" fill="#ff5c6a" text-anchor="middle">13%</text>
+    <!-- Peak marker -->
+    <polygon points="421,22 415,14 427,14" fill="#ffd060" opacity="0.9"/>
+    <text x="421" y="12" font-size="8" fill="#ffd060" text-anchor="middle">전고점</text>
+    <!-- Down marker on 4차 -->
+    <text x="476" y="58" font-size="10" fill="#ff5c6a" text-anchor="middle">▼</text>
+    <text x="506" y="115" font-size="10" fill="#ff5c6a" text-anchor="middle">▼</text>
+    <!-- Trend lines -->
+    <polyline points="96,42 201,37 296,44 386,39 476,50"
+      fill="none" stroke="#a090ff" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+    <polyline points="131,100 236,97 331,102 421,99 506,107"
+      fill="none" stroke="#ff5c6a" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
+    <rect x="57" y="168" width="10" height="8" rx="1" fill="rgba(123,92,250,0.6)"/>
+    <text x="71" y="176" font-size="9" fill="#8890a8">CTR (미연동)</text>
+    <rect x="155" y="168" width="10" height="8" rx="1" fill="rgba(255,92,106,0.6)"/>
+    <text x="169" y="176" font-size="9" fill="#8890a8">CVR — 전고점 미돌파, 4차 하락</text>
+  </svg>
+</div>
+
+    </div>
+  </div>
+
+  <div class="evidence-section">
+    <div class="evidence-section-title">툴팁 가중치</div>
+    <div class="evidence-card">
+      <div class="insight-box">CTR·CVR 효율 격차는 툴팁이 아닌 CTA가 결정. ❤️ 연동 케이스에서만 툴팁 역할 포착.</div>
+      <ul>
+        <li>❤️ 연동 론: '금리' 툴팁 CVR 27.1% vs 무툴팁 26.8%</li>
+        <li>❤️ 연동 리스: '한도' 툴팁 CVR 25.0% vs 무툴팁 22.7%</li>
+        <li>💔 미연동 CVR: 툴팁별 14.9~15.4% 사실상 동일</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="evidence-section">
+    <div class="evidence-section-title">운영 방식 비교 &amp; 주기 재판정</div>
+
+    <div class="op-section">
+      <div class="op-section-title">📅 교체 주기 적정성 판단</div>
+      
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 16px;">
+
+  <div class="chart-wrap">
+    <div class="chart-title">❤️ 차량 연동 — CTR &amp; CVR (52주)</div>
+    <div class="chart-sub">8주 이동평균 기준 성과 둔화 완만</div>
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <!-- Grid -->
+      <line x1="35" y1="10" x2="35" y2="165" stroke="#252a3a" stroke-width="1"/>
+      <line x1="35" y1="165" x2="290" y2="165" stroke="#252a3a" stroke-width="1"/>
+      <line x1="35" y1="45"  x2="290" y2="45"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="35" y1="85"  x2="290" y2="85"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="35" y1="125" x2="290" y2="125" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <!-- Y labels -->
+      <text x="30" y="48"  font-size="8" fill="#4a5270" text-anchor="end">40%</text>
+      <text x="30" y="88"  font-size="8" fill="#4a5270" text-anchor="end">25%</text>
+      <text x="30" y="128" font-size="8" fill="#4a5270" text-anchor="end">10%</text>
+      <text x="30" y="168" font-size="8" fill="#4a5270" text-anchor="end">0%</text>
+      <!-- X labels -->
+      <text x="80"  y="178" font-size="8" fill="#4a5270" text-anchor="middle">Jul'25</text>
+      <text x="162" y="178" font-size="8" fill="#4a5270" text-anchor="middle">Oct'25</text>
+      <text x="265" y="178" font-size="8" fill="#4a5270" text-anchor="middle">Jan'26</text>
+      <!-- CTR raw (연동: 낮고 변동성 작음 5~15%) -->
+      <polyline
+        points="45,145 55,148 68,140 80,150 92,143 105,138 118,146 130,134 142,140 155,133 168,130 180,136 192,129 205,135 218,127 230,132 242,125 255,130 268,122 280,128"
+        fill="none" stroke="#4f7cff" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
+      <!-- CVR raw (연동: 높고 25~35%) -->
+      <polyline
+        points="45,85 55,78 68,92 80,68 92,80 105,58 118,75 130,50 142,65 155,55 168,45 180,60 192,50 205,58 218,45 230,52 242,46 255,50 268,42 280,48"
+        fill="none" stroke="#22d3a0" stroke-width="1.2" stroke-linejoin="round" opacity="0.6" stroke-dasharray="3,2"/>
+      <!-- CTR 8주 이동평균 (완만 하락) -->
+      <polyline
+        points="105,142 130,140 155,137 180,134 205,132 230,130 255,128 280,126"
+        fill="none" stroke="#a0c4ff" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- CVR 8주 이동평균 (안정적) -->
+      <polyline
+        points="105,68 130,65 155,60 180,57 205,54 230,52 255,50 280,48"
+        fill="none" stroke="#6effd8" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Legend labels -->
+      <text x="37" y="195" font-size="7.5" fill="#a0c4ff">— CTR 8주MA</text>
+      <text x="120" y="195" font-size="7.5" fill="#6effd8">— CVR 8주MA</text>
+      <text x="200" y="195" font-size="7.5" fill="#4f7cff" opacity="0.7">… CTR raw</text>
+    </svg>
+    <div class="chart-legend" style="margin-top:4px;">
+      <div class="legend-item"><div class="legend-dot" style="background:#4f7cff;opacity:0.7;"></div>CTR</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#22d3a0;opacity:0.7;"></div>CVR</div>
+      <div class="legend-item"><div style="width:12px;height:3px;background:#a0c4ff;border-radius:0;margin-right:4px;"></div>CTR 8주MA</div>
+      <div class="legend-item"><div style="width:12px;height:3px;background:#6effd8;border-radius:0;margin-right:4px;"></div>CVR 8주MA</div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:var(--green);font-weight:600;">✅ 8~12주 교체 텀 합리적 — 둔화 완만</div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">💔 차량 미연동 — CTR &amp; CVR (52주)</div>
+    <div class="chart-sub">8주 이동평균 기준 둔화 빠름</div>
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <line x1="35" y1="10" x2="35" y2="165" stroke="#252a3a" stroke-width="1"/>
+      <line x1="35" y1="165" x2="290" y2="165" stroke="#252a3a" stroke-width="1"/>
+      <line x1="35" y1="45"  x2="290" y2="45"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="35" y1="85"  x2="290" y2="85"  stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <line x1="35" y1="125" x2="290" y2="125" stroke="#252a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <text x="30" y="48"  font-size="8" fill="#4a5270" text-anchor="end">30%</text>
+      <text x="30" y="88"  font-size="8" fill="#4a5270" text-anchor="end">20%</text>
+      <text x="30" y="128" font-size="8" fill="#4a5270" text-anchor="end">10%</text>
+      <text x="30" y="168" font-size="8" fill="#4a5270" text-anchor="end">5%</text>
+      <text x="80"  y="178" font-size="8" fill="#4a5270" text-anchor="middle">Jul'25</text>
+      <text x="162" y="178" font-size="8" fill="#4a5270" text-anchor="middle">Oct'25</text>
+      <text x="265" y="178" font-size="8" fill="#4a5270" text-anchor="middle">Jan'26</text>
+      <!-- CTR raw (미연동: 높고 변동성 큼 15~28%) -->
+      <polyline
+        points="45,62 55,45 68,72 80,40 92,58 105,48 118,78 130,52 142,88 155,60 168,92 180,65 192,98 205,72 218,102 230,80 242,108 255,88 268,112 280,95"
+        fill="none" stroke="#a090ff" stroke-width="1.2" stroke-linejoin="round" opacity="0.6"/>
+      <!-- CVR raw (미연동: 낮음 10~17%) -->
+      <polyline
+        points="45,118 55,112 68,122 80,108 92,115 105,105 118,118 130,100 142,112 155,98 168,115 180,100 192,118 205,105 218,120 230,108 242,122 255,112 268,125 280,115"
+        fill="none" stroke="#ff8090" stroke-width="1.2" stroke-linejoin="round" opacity="0.6" stroke-dasharray="3,2"/>
+      <!-- CTR 8주 이동평균 (빠른 하락) -->
+      <polyline
+        points="105,54 130,62 155,72 180,80 205,88 230,96 255,104 280,110"
+        fill="none" stroke="#ffb060" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- CVR 8주 이동평균 (완만 하락) -->
+      <polyline
+        points="105,110 130,108 155,108 180,110 205,112 230,115 255,118 280,120"
+        fill="none" stroke="#ff7090" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- 둔화 annotation -->
+      <text x="200" y="85" font-size="8" fill="#ffb060">빠른 둔화 ▼</text>
+      <text x="37" y="195" font-size="7.5" fill="#ffb060">— CTR 8주MA</text>
+      <text x="120" y="195" font-size="7.5" fill="#ff7090">— CVR 8주MA</text>
+      <text x="200" y="195" font-size="7.5" fill="#a090ff" opacity="0.7">… CTR raw</text>
+    </svg>
+    <div class="chart-legend" style="margin-top:4px;">
+      <div class="legend-item"><div class="legend-dot" style="background:#a090ff;opacity:0.7;"></div>CTR</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ff8090;opacity:0.7;"></div>CVR</div>
+      <div class="legend-item"><div style="width:12px;height:3px;background:#ffb060;border-radius:0;margin-right:4px;"></div>CTR 8주MA</div>
+      <div class="legend-item"><div style="width:12px;height:3px;background:#ff7090;border-radius:0;margin-right:4px;"></div>CVR 8주MA</div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:var(--red);font-weight:600;">⚠️ 4~6주 교체 권장 — 3개월은 너무 길 가능성</div>
+  </div>
+
+</div>
+      <!-- 유저 구성 회고 시각화 -->
+      <p style="font-size:12px;font-weight:600;color:var(--text-dim);margin-bottom:8px;">💡 유저 구성 회고</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 14px;">
+        <!-- CCLoan Main View -->
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span style="font-size:15px;">📊</span>
+            <span style="font-size:13px;font-weight:700;color:var(--text);">CCLoan Main View 유저 구성</span>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">재수행 유저가 큰 비중 차지</div>
+          <!-- NU 비율 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">NU 비율</span>
+              <span style="font-size:13px;font-weight:800;color:#fff;">21%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(79,124,255,0.75);width:21%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <!-- 리텐션 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">3개월 연속 리텐션</span>
+              <span style="font-size:13px;font-weight:800;color:#fff;">15~20%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(79,124,255,0.55);width:17%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <!-- 생애최초 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">생애최초 비율</span>
+              <span style="font-size:13px;font-weight:800;color:#ffd060;">50~65%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(180,140,30,0.75);width:57%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <div style="background:rgba(255,208,96,0.06);border:1px solid rgba(255,208,96,0.2);border-radius:6px;padding:8px 10px;margin-top:4px;">
+            <span style="font-size:11px;color:#ffd060;">⚠ 재방문 의존율 높음 — 생애최초 50~65%에 불과</span>
+          </div>
+        </div>
+        <!-- CTA 클릭 -->
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:18px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <span style="font-size:15px;">📊</span>
+            <span style="font-size:13px;font-weight:700;color:var(--text);">CTA 클릭 유저 구성</span>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-bottom:14px;">최초 수행 유저가 압도적 다수</div>
+          <!-- NU 비율 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">NU 비율</span>
+              <span style="font-size:13px;font-weight:800;color:#fff;">30%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(79,124,255,0.9);width:30%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <!-- 리텐션 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">3개월 연속 리텐션</span>
+              <span style="font-size:13px;font-weight:800;color:#ff5c6a;">5%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(255,92,106,0.75);width:5%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <!-- 생애최초 -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span style="font-size:12px;color:var(--text-dim);">생애최초 비율</span>
+              <span style="font-size:13px;font-weight:800;color:#22d3a0;">82~85%</span>
+            </div>
+            <div style="background:#1c2030;border-radius:5px;height:10px;overflow:hidden;">
+              <div style="background:rgba(34,211,160,0.8);width:83%;height:100%;border-radius:5px;"></div>
+            </div>
+          </div>
+          <div style="background:rgba(34,211,160,0.06);border:1px solid rgba(34,211,160,0.2);border-radius:6px;padding:8px 10px;margin-top:4px;">
+            <span style="font-size:11px;color:#22d3a0;">✅ 생애최초 82~85% — 첫 클릭 유저가 전환 핵심</span>
+          </div>
+        </div>
+      </div>
+      <ul style="font-size:13px;color:var(--text-dim);margin-top:4px;margin-bottom:16px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+        <li>• 페이지 유입 풀 자체는 재수행 유저 크게 기여, CTA 클릭은 '처음' 수행하는 유저가 크게 기여</li>
+        <li>• Main View RU 중심, 그 중 이미 방문한 유저가 반복적 유입</li>
+        <li>• CTA Click 역시 RU 중심, 그 중에서도 최초로 수행하는 유저가 대다수</li>
+        <li style="color:var(--yellow);">⚠ Main View → CTA Click 11~20%로 낮은 수준으로, CTA Click이 아닌 Main View의 생애최초 비율을 더 주요하게 생각하고 변경 텀을 타이트하게 잡아야 했음</li>
+
+
+
+      <div class="op-compare" style="margin-top:12px;">
+        <div class="op-card connected">
+          <div class="op-title">❤️ 차량 연동 — 8~12주 적정</div>
+          <ul>
+            <li>CTR 8주 이동평균 기준 성과 둔화가 완만</li>
+            <li>8~12주 교체 텀이 합리적 (3개월도 "크게" 무리 아님)</li>
+            <li>Punch-through가 높아 메시지 정밀도 ROI가 큰 편</li>
+          </ul>
+        </div>
+        <div class="op-card unconnected">
+          <div class="op-title">💔 차량 미연동 — 4~6주 추천</div>
+          <ul>
+            <li>CTR 둔화가 더 빨리 와서 4~6주가 더 방어적</li>
+            <li>3개월 주기는 너무 길 가능성 큼</li>
+            <li>4차 시작 후(11/03) 약 6주 시점부터 CTR·CVR 동반 둔화 반복</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="op-section">
+      <div class="op-section-title">🔄 운영 방식 적정성 판단</div>
+      <div class="highlight-box">
+        <strong>[1~2차 4개 롤링 운영]</strong> 대비 <strong>[3~4차 최적화 소수 운영]</strong> 기간의 평균 성과가 높으나,<br>
+        케이스에 따라 운영 방식을 달리하는 것이 합리적
+      </div>
+
+            </ul>
+
+      <div class="op-compare">
+        <div class="op-card connected">
+          <div class="op-title">❤️ 연동: 소수(2개) 최적화 운영 추천</div>
+          <ul>
+            <li>클릭 • 신청(Punch-through) 구조적으로 높아 (30%) 메시지/툴팁/플로우 최적화 ROI가 큼</li>
+            <li>메시지 정밀도가 CVR을 직접 움직이는 민감도 높은 편</li>
+            <li>소수 에셋 고정 + 툴팁 분리(론=금리, 리스=한도)</li>
+          </ul>
+        </div>
+        <div class="op-card unconnected">
+          <div class="op-title">💔 미연동: 4개 이상 롤링 운영 추천</div>
+          <ul>
+            <li>CTR은 높지만 Punch-through가 낮아(10~16%) 신선도(CTR) 방어가 먼저 필요</li>
+            <li>소수 고정은 반감(피로) 리스크 키움</li>
+            <li>4차 테스트 시작(11/03) 후 약 6주 시점부터 CTR·CVR 동반 둔화 반복 — 3개월 주기보다 짧게 교체 필요</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 미연동 +20건 볼륨 증진 방안 -->
+  <div style="margin-top:28px;">
+    <div class="op-section-title" style="margin-bottom:14px;">📈 미연동 케이스 주간 +20건 추가 볼륨 증진을 위한 방안</div>
+    <!-- 지표 카드 -->
+    <div style="margin-bottom:16px;">
+      <span class="metric-group-label mgu">💔 차량 미연동 핵심 지표</span>
+      <div class="metric-row-group">
+        <div class="metric-card u-border">
+          <div class="metric-value" style="color:#fff;font-size:26px;font-weight:800;font-family:'Space Mono',monospace;">21.7%</div>
+          <div class="metric-label">미연동 CTR 현재</div>
+          <div class="metric-sub">고점 27.2% 대비 지속 하락</div>
+        </div>
+        <div class="metric-card u-border">
+          <div class="metric-value" style="color:#fff;font-size:26px;font-weight:800;font-family:'Space Mono',monospace;">10~16%</div>
+          <div class="metric-label">미연동 Punch-through</div>
+          <div class="metric-sub">CTA 클릭 후 Step1 제출 비율</div>
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <span class="metric-group-label mgc">❤️ 차량 연동 핵심 지표</span>
+        <div class="metric-row-group">
+          <div class="metric-card c-border">
+            <div class="metric-value" style="color:#fff;font-size:26px;font-weight:800;font-family:'Space Mono',monospace;">9~10%</div>
+            <div class="metric-label">연동 CTR</div>
+            <div class="metric-sub">동기간 구조적 붕괴 없음</div>
+          </div>
+          <div class="metric-card c-border">
+            <div class="metric-value" style="color:#fff;font-size:26px;font-weight:800;font-family:'Space Mono',monospace;">30%</div>
+            <div class="metric-label">연동 Punch-through</div>
+            <div class="metric-sub">CTA 클릭 후 Step1 제출 비율</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert">핵심 누수 구간: <strong>클릭 • Step1</strong> (CTA CTR 1.7% 대비 Step1 0.7%) — 미연동의 낮은 Punch-through(10~16%) vs 연동(30%)이 핵심 격차</div>
+    <div class="strategy-grid" style="margin-top:14px;">
+      <div class="strategy-card">
+        <div class="strategy-tag tag-product">Product</div>
+        <h4>클릭 • Step1 마찰 분해</h4>
+        <ul>
+          <li>CTA 클릭 직후 '남은 단계 수' 표출로 심리적 허들 제거</li>
+          <li>Step1 앞 프리퀄 생성</li>
+          <li>정보 이어 입력하기 기능 추가</li>
+        </ul>
+      </div>
+      <div class="strategy-card">
+        <div class="strategy-tag tag-crm">CRM · PUSH</div>
+        <h4>💔 미연동 CTA Click 트리거 캠페인 추가</h4>
+        <ul>
+          <li>신규 트리거: CTA Click 후 Step1 미제출</li>
+          <li>KPI: Step1 Submit</li>
+          <li>IAM 보조 채널로 '남은 단계·소요시간' 제시</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 액션 아이템 -->
+  <h3 class="sub-h3">액션 아이템</h3>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strategy-tag tag-product">Product</div>
+      <h4>클릭 • Step1 마찰 분해</h4>
+      <ul>
+        <li>CTA 클릭 직후 '남은 단계 수' 표출로 심리적 허들 제거</li>
+        <li>Step1 앞 프리퀄 생성</li>
+        <li>정보 이어 입력하기 기능 추가</li>
+      </ul>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-tag tag-product">Product</div>
+      <h4>에셋 운영 방식 이원화</h4>
+      <ul>
+        <li>❤️ 연동: 소수(2개) 최적화 운영 — 메시지 정밀도 ROI 극대화</li>
+        <li>💔 미연동: 4개 이상 롤링 운영 — 신선도(CTR) 방어 우선</li>
+        <li>교체 주기: 연동 8~12주, 미연동 4~6주</li>
+      </ul>
+    </div>
+    <div class="strategy-card" style="grid-column: 1 / -1;">
+      <div class="strategy-tag tag-crm">CRM · PUSH</div>
+      <h4>💔 미연동 CTA Click 트리거 캠페인 추가</h4>
+      <p style="font-size:12px;color:var(--text-dim);margin-bottom:10px;">현행 캠페인 구성</p>
+      <table class="campaign-table">
+        <thead>
+          <tr><th>캠페인</th><th>트리거</th><th>KPI</th><th>현황</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>상담신청 시도 독려</td><td>Main View (60초)</td><td>CTA Click</td><td>운영 중</td></tr>
+          <tr><td>정보입력 독려</td><td>Calc Touch (10분)</td><td>Step1 submit</td><td>운영 중</td></tr>
+          <tr><td>상담신청 완료 독려</td><td>Step1 submit (2h)</td><td>Submit Complete</td><td>전환 0건</td></tr>
+        </tbody>
+      </table>
+      <ul style="margin-top:10px;">
+        <li>신규 트리거 추가: CTA Click 후 Step1 미제출</li>
+        <li>KPI: Step1 Submit</li>
+        <li>IAM 보조 채널로 '남은 단계·소요시간' 제시</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PART 2 ======== -->
+<section class="section" id="part2">
+  <div class="section-header">
+    <span class="section-num">PART 02</span>
+    <h2>리스와 론 유저 차이</h2>
+  </div>
+
+  <div class="summary-box">
+    <p>리스와 할부는 같은 상품의 다른 결제 방식이 아니라, <strong>서로 다른 고객군의 다른 문제를 해결하는 수단</strong>.<br>
+    리스는 유저에게 '구매 대안'이 아니라 <strong>'체급 상승을 가능하게 하는 구조적 수단'</strong>.</p>
+  </div>
+
+  <!-- 관심 가격대 비교 -->
+  <h3 class="sub-h3">관심 가격대 비교</h3>
+  
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+  <!-- 할부 유저 -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <span style="font-size:20px;">🏷️</span>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);">할부 유저</div>
+        <div style="font-size:11px;color:var(--text-muted);">핵심 과제: "합리적으로 살 수 있는가"</div>
+      </div>
+    </div>
+    <!-- 가격 분포 -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;font-weight:600;">가격 분포</div>
+      <div style="position:relative;height:28px;background:#1c2030;border-radius:6px;overflow:hidden;">
+        <div style="position:absolute;left:0;top:0;width:75%;height:100%;background:linear-gradient(90deg,rgba(79,124,255,0.7),rgba(79,124,255,0.35));border-radius:6px 0 0 6px;display:flex;align-items:center;padding-left:10px;">
+          <span style="font-size:11px;font-weight:700;color:#fff;white-space:nowrap;">75% — 2,500만원 미만</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:3px;">
+        <span>0</span><span>2,500만</span><span>5,000만+</span>
+      </div>
+    </div>
+    <!-- 스탯 -->
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--border);">
+        <span style="font-size:12px;color:var(--text-dim);">중앙값</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">1,850만원</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--border);">
+        <span style="font-size:12px;color:var(--text-dim);">구연식</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">47% (2019 이전)</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--border);">
+        <span style="font-size:12px;color:var(--text-dim);">주요 모델</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">아반떼·쏘나타·그랜저</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--border);">
+        <span style="font-size:12px;color:var(--text-dim);">핵심 가치</span>
+        <span style="font-size:12px;font-weight:700;color:var(--accent);">가성비</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;">
+        <span style="font-size:12px;color:var(--text-dim);">역할</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">실구매 수단</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 리스 유저 -->
+  <div style="background:var(--surface);border:1px solid rgba(123,92,250,0.35);border-radius:12px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+      <span style="font-size:20px;">✨</span>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text);">리스 유저</div>
+        <div style="font-size:11px;color:var(--text-muted);">핵심 과제: "체급을 올릴 수 있는가"</div>
+      </div>
+    </div>
+    <!-- 가격 분포 -->
+    <div style="margin-bottom:14px;">
+      <div style="font-size:11px;color:var(--text-dim);margin-bottom:6px;font-weight:600;">가격 분포</div>
+      <div style="position:relative;height:28px;background:#1c2030;border-radius:6px;overflow:hidden;">
+        <div style="position:absolute;left:0;top:0;width:100%;height:100%;display:flex;">
+          <div style="width:36%;height:100%;background:rgba(123,92,250,0.1);"></div>
+          <div style="width:28%;height:100%;background:linear-gradient(90deg,rgba(123,92,250,0.75),rgba(123,92,250,0.5));display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:10px;font-weight:700;color:#fff;white-space:nowrap;">최빈 구간</span>
+          </div>
+          <div style="flex:1;height:100%;background:rgba(123,92,250,0.15);"></div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:3px;">
+        <span>0</span><span>2,500~3,500만</span><span>5,000만+</span>
+      </div>
+    </div>
+    <!-- 스탯 -->
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(123,92,250,0.2);border-radius:8px;overflow:hidden;">
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(123,92,250,0.15);">
+        <span style="font-size:12px;color:var(--text-dim);">중앙값</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">3,180만원 <span style="color:var(--accent2);font-size:10px;">(1.7배↑)</span></span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(123,92,250,0.15);">
+        <span style="font-size:12px;color:var(--text-dim);">신차 비율</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">72.9% (2022년 이후)</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(123,92,250,0.15);">
+        <span style="font-size:12px;color:var(--text-dim);">주요 모델</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">GV70·G80·BMW 3·5·폴스타2</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid rgba(123,92,250,0.15);">
+        <span style="font-size:12px;color:var(--text-dim);">핵심 가치</span>
+        <span style="font-size:12px;font-weight:700;color:var(--accent2);">접근성 (체급 점프)</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px 12px;">
+        <span style="font-size:12px;color:var(--text-dim);">역할</span>
+        <span style="font-size:12px;font-weight:700;color:var(--text);">체급 점프 수단</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- 전략 비교 -->
+  <h3 class="sub-h3">전략적 시사점: 같은 Funnel에 놓을 수 없다</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>구분</th><th>할부</th><th>리스</th></tr></thead>
+      <tbody>
+        <tr><td>고객 과제</td><td>합리적으로 살 수 있는가</td><td>체급을 올릴 수 있는가</td></tr>
+        <tr><td>기준 가격</td><td>예산 중심</td><td>상위 희망 기준</td></tr>
+        <tr><td>연식 허용</td><td>넓음</td><td>출고 3년 이하</td></tr>
+        <tr><td>핵심 가치</td><td>가성비</td><td>접근성</td></tr>
+        <tr><td>역할</td><td>실구매 수단</td><td>체급 점프 수단</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 세그먼트 분류 -->
+  <h3 class="sub-h3">세그먼트 분류</h3>
+  
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+
+  <div style="background:linear-gradient(135deg,rgba(79,124,255,0.08),rgba(79,124,255,0.04));border:1px solid rgba(79,124,255,0.25);border-radius:10px;padding:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="font-size:12px;font-weight:700;color:var(--accent);">Lease High-Intent</span>
+      <span style="font-size:10px;background:rgba(79,124,255,0.12);color:var(--accent);padding:2px 7px;border-radius:4px;border:1px solid rgba(79,124,255,0.2);">리스</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--text-dim);">
+      <div style="display:flex;justify-content:space-between;"><span>최빈 가격대</span><span style="color:var(--text);font-weight:600;">≥4,000만원</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 연식</span><span style="color:var(--text);font-weight:600;">≥2022</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 브랜드</span><span style="color:var(--text);font-weight:600;">국산·수입 무관</span></div>
+      <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(79,124,255,0.15);color:var(--accent);font-weight:600;">신차급·수입차 접근, 초기비용 없음</div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(79,124,255,0.05),rgba(79,124,255,0.02));border:1px solid rgba(79,124,255,0.15);border-radius:10px;padding:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="font-size:12px;font-weight:700;color:var(--accent);">Lease Mid-Intent</span>
+      <span style="font-size:10px;background:rgba(79,124,255,0.12);color:var(--accent);padding:2px 7px;border-radius:4px;border:1px solid rgba(79,124,255,0.2);">리스</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--text-dim);">
+      <div style="display:flex;justify-content:space-between;"><span>최빈 가격대</span><span style="color:var(--text);font-weight:600;">3,000~3,999만원</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 연식</span><span style="color:var(--text);font-weight:600;">≥2020</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 브랜드</span><span style="color:var(--text);font-weight:600;">국산·수입 무관</span></div>
+      <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(79,124,255,0.1);color:var(--accent);font-weight:600;">월 부담 최소화</div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(34,211,160,0.06),rgba(34,211,160,0.02));border:1px solid rgba(34,211,160,0.18);border-radius:10px;padding:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="font-size:12px;font-weight:700;color:var(--green);">Loan High-Intent</span>
+      <span style="font-size:10px;background:rgba(34,211,160,0.1);color:var(--green);padding:2px 7px;border-radius:4px;border:1px solid rgba(34,211,160,0.2);">론</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--text-dim);">
+      <div style="display:flex;justify-content:space-between;"><span>최빈 가격대</span><span style="color:var(--text);font-weight:600;">≤3,000만원</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 연식</span><span style="color:var(--text);font-weight:600;">무관</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 브랜드</span><span style="color:var(--text);font-weight:600;">국산 중심</span></div>
+      <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(34,211,160,0.12);color:var(--green);font-weight:600;">실구매 가성비</div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,rgba(34,211,160,0.04),rgba(79,124,255,0.04));border:1px solid rgba(34,211,160,0.12);border-radius:10px;padding:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span style="font-size:12px;font-weight:700;color:var(--green);">Loan Upgrade</span>
+      <span style="font-size:10px;background:rgba(34,211,160,0.1);color:var(--green);padding:2px 7px;border-radius:4px;border:1px solid rgba(34,211,160,0.15);">론→리스</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--text-dim);">
+      <div style="display:flex;justify-content:space-between;"><span>최빈 가격대</span><span style="color:var(--text);font-weight:600;">&gt;3,000만원</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 연식</span><span style="color:var(--text);font-weight:600;">무관</span></div>
+      <div style="display:flex;justify-content:space-between;"><span>최빈 브랜드</span><span style="color:var(--text);font-weight:600;">국산·수입 무관</span></div>
+      <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(34,211,160,0.1);color:var(--green);font-weight:600;">리스 전환 유도</div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- 액션 아이템 -->
+  <h3 class="sub-h3">액션 아이템</h3>
+  
+    <div class="camp-card">
+      <div class="camp-header">
+        <div class="strategy-tag tag-crm" style="margin:0;">PUSH</div>
+        <div class="camp-title">리스 잠재고객 RT PUSH 캠페인</div>
+      </div>
+      <div class="camp-rows">
+        <div class="camp-row">
+          <div class="camp-key">목적</div>
+          <div class="camp-val">리스 잠재고객 전환 유도</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">발송 스케줄</div>
+          <div class="camp-val">매일 오후 7시</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">세그먼트</div>
+          <div class="camp-val">
+            Lease High-Intent — 관심 가격 ≥4,000만원, 연식 ≥2022<br>
+            Lease Mid-Intent — 관심 가격 3,000~3,999만원, 연식 ≥2020
+          </div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">제외</div>
+          <div class="camp-val">리스 상담 신청 완료 유저</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">메시지</div>
+          <div class="camp-val">
+            <span class="msg">"4천만원 차량 월 부담 줄이고 연식은 신차급으로 타는~"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div class="camp-card">
+      <div class="camp-header">
+        <div class="strategy-tag tag-crm" style="margin:0;">IAM</div>
+        <div class="camp-title">리스 잠재고객 AB IAM 캠페인</div>
+      </div>
+      <div class="camp-rows">
+        <div class="camp-row">
+          <div class="camp-key">목적</div>
+          <div class="camp-val">고가 차량 니즈 명확하나 결제 수단이 확정되지 않은 유저 리스 유도</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">트리거</div>
+          <div class="camp-val">CCLoan main view 진입</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">세그먼트</div>
+          <div class="camp-val">Lease High-Intent — 관심 가격 ≥4,000만원, 연식 ≥2022<br>Lease Mid-Intent — 관심 가격 3,000~3,999만원, 연식 ≥2020</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">제외</div>
+          <div class="camp-val">리스 상담 신청 완료 유저</div>
+        </div>
+        <div class="camp-row">
+          <div class="camp-key">메시지</div>
+          <div class="camp-val">
+            <span class="msg">"이 모델, 리스 이용 유저가 많아요"</span>
+            <span class="msg">"이 차 리스로 이용하면 구매 대비 00만원 저렴해요"</span>
+            <span class="msg">"신차급 차량은 리스로 초기 부담을 줄이는 선택이 많아요"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- 기존 캠페인 리스/할부 분기 고도화 -->
+  <div class="camp-card">
+    <div class="camp-header">
+      <div class="strategy-tag tag-crm" style="margin:0;">PUSH</div>
+      <div class="camp-title">기존 캠페인 리스/할부 분기 고도화</div>
+    </div>
+    <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">리스 • 한도/월납입금 앵커 / 론 • 금리/월납입금 앵커</p>
+    <p style="font-size:12px;font-weight:600;color:var(--text-dim);margin-bottom:8px;">현행 메시지 구성</p>
+    <div class="table-wrap" style="margin-bottom:16px;">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>상담신청 시도 독려<br><small style="font-weight:400;color:var(--text-muted);">트리거: Main View | KPI: CTA Click</small></th>
+            <th>정보입력 독려<br><small style="font-weight:400;color:var(--text-muted);">트리거: Calc Touch | KPI: Step1 submit</small></th>
+            <th>상담신청 완료 독려<br><small style="font-weight:400;color:var(--text-muted);">트리거: Step1 submit | KPI: Submit Complete</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);">현행 분기</td>
+            <td>리스/할부 분기 대응 O</td>
+            <td>리스/할부 분기 대응 X</td>
+            <td>리스/할부 분기 대응 X</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);">❤️ 차량연동</td>
+            <td>
+              <span style="color:var(--accent);font-weight:700;font-size:11px;display:block;margin-bottom:2px;">리스</span>
+              방금 본 {모델} ({가격}만원)<br>선수금 없이도 구매할 수 있어요<br><br>
+              <span style="color:var(--accent2);font-weight:700;font-size:11px;display:block;margin-bottom:2px;">론</span>
+              방금 본 {모델} ({가격}만원)<br>대출 얼마까지 나올지 조회할 수 있어요
+            </td>
+            <td>계산해본 차 {type} 구매 시 월 {월납입금} 예상돼요<br>실제 납입금 조회 시 더 내려갈 수 있어요</td>
+            <td>오늘 알아본 {모델}, 나의 월 납입액은?<br>정보 마저 입력하고 조회해보세요</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);">💔 차량미연동</td>
+            <td>방금 본 차 대출 한도가 궁금하신가요?<br>첫차론에서 간편하게 조회할 수 있어요</td>
+            <td>계산해본 차 {type} 구매 시 월 {월납입금} 예상돼요<br>실제 납입금 조회 시 더 내려갈 수 있어요</td>
+            <td>오늘 알아본 차, 나의 월 납입액은?<br>정보 마저 입력하고 조회해보세요</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;font-weight:600;color:var(--text-dim);margin-bottom:8px;">TOBE — 론 • 금리/월납입금 앵커 적용</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>정보입력 독려 TOBE<br><small style="font-weight:400;color:var(--text-muted);">트리거: Calc Touch</small></th>
+            <th>상담신청 완료 독려 TOBE<br><small style="font-weight:400;color:var(--text-muted);">트리거: Step1 submit</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);">❤️ 차량연동</td>
+            <td>
+              <span style="display:inline-block;background:rgba(79,124,255,0.12);border:1px solid rgba(79,124,255,0.3);border-radius:3px;padding:1px 6px;font-size:11px;color:var(--accent);margin-bottom:4px;">리스</span><br>
+              {모델} {type} 전문 상담사가 기다려요<br>추가한도 받고 {월납입금}보다 낮은 월 납입금 확인해보세요<br><br>
+              <span style="display:inline-block;background:rgba(123,92,250,0.12);border:1px solid rgba(123,92,250,0.3);border-radius:3px;padding:1px 6px;font-size:11px;color:var(--accent2);margin-bottom:4px;">론</span><br>
+              {모델} {type} 전문 상담사가 기다려요<br>최저 금리 적용하고 {월납입금}보다 낮은 월 납입금 확인해보세요
+            </td>
+            <td>
+              <span style="display:inline-block;background:rgba(79,124,255,0.12);border:1px solid rgba(79,124,255,0.3);border-radius:3px;padding:1px 6px;font-size:11px;color:var(--accent);margin-bottom:4px;">리스</span><br>
+              {모델} {type} 이용 시 최대 한도 확인 중<br>정보 마저 입력하면 회원님을 최적 조건이 안내돼요<br><br>
+              <span style="display:inline-block;background:rgba(123,92,250,0.12);border:1px solid rgba(123,92,250,0.3);border-radius:3px;padding:1px 6px;font-size:11px;color:var(--accent2);margin-bottom:4px;">론</span><br>
+              {모델} {type} 이용 시 최저 금리 확인 중<br>정보 마저 입력하면 회원님을 최적 조건이 안내돼요
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);">💔 차량미연동</td>
+            <td style="color:var(--text-muted);">미정</td>
+            <td style="color:var(--text-muted);">미정</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 리스 전용 계산기 -->
+  <div class="camp-card" style="border-color:rgba(123,92,250,0.2);">
+    <div class="camp-header">
+      <div class="strategy-tag tag-product" style="margin:0;">Product</div>
+      <div class="camp-title">리스 전용 계산기 고도화</div>
+    </div>
+    <ul style="font-size:13px;color:var(--text-dim);padding-left:16px;line-height:2;">
+      <li>단순 월 납입금 계산을 넘어 이 차를 리스로 선택하는 게 왜 합리적인지 보여주는 도구로 정의</li>
+      <li>구매 대비 리스 경제성·초기비용 비교 표시</li>
+      <li>'바로 상담신청(Fast-track)' 버튼 도입</li>
+    </ul>
+  </div>
+
+  <!-- [연관] 미연동 케이스 계산기 전환 분석 -->
+  <div style="margin-top:28px;">
+    <span class="related-badge">연관</span>
+    <h3 class="sub-h3" style="margin-top:6px;">미연동 케이스 계산기 전환 분석</h3>
+  </div>
+  <div class="summary-box" style="border-color:rgba(255,208,96,0.3);background:rgba(255,208,96,0.05);">
+    <p style="font-weight:700;margin-bottom:10px;">계산하기는 전환자의 전형적 루트이지만, 미연동에서는 적용되지 않음</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;">
+      <div style="background:rgba(79,124,255,0.06);border:1px solid rgba(79,124,255,0.15);border-radius:8px;padding:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px;">❤️ 차량 연동</div>
+        <div style="font-size:12px;color:var(--text-dim);display:flex;flex-direction:column;gap:4px;">
+          <span>① 신청자 중 대부분이 계산하기 수행</span>
+          <span>② 페이지 내 계산하기 수행률 <strong style="color:var(--accent);">77%</strong></span>
+        </div>
+      </div>
+      <div style="background:rgba(123,92,250,0.06);border:1px solid rgba(123,92,250,0.15);border-radius:8px;padding:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:8px;">💔 차량 미연동</div>
+        <div style="font-size:12px;color:var(--text-dim);display:flex;flex-direction:column;gap:4px;">
+          <span>① 신청자 중 대부분이 계산하기 <strong style="color:var(--red);">미수행</strong></span>
+          <span>② 페이지 내 계산하기 수행률 <strong style="color:var(--red);">17%</strong></span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px;background:rgba(255,208,96,0.06);border-radius:6px;border:1px solid rgba(255,208,96,0.15);">
+      <p style="font-size:12px;color:var(--yellow);">💡 첫차론 완료자 중 90%가 계산하기 수행 — 계산기는 완료로 가는 핵심 경로<br>단, 미연동 페이지에서는 해당 공식이 적용되지 않음</p>
+    </div>
+  </div>
+
+  <!-- 미연동 계산기 액션 아이템 -->
+  <h3 class="sub-h3">미연동 계산기 액션 아이템</h3>
+  <div class="strategy-grid">
+    <div class="strategy-card" style="grid-column: 1 / -1;">
+      <div class="strategy-tag tag-product">Product</div>
+      <h4>💔 미연동 계산기 UI 간소화 및 CTA 클릭 강조</h4>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PART 3 ======== -->
+<section class="section" id="part3">
+  <div class="section-header">
+    <span class="section-num">PART 03</span>
+    <h2>CRM 캠페인 현황 및 KPI 재정의</h2>
+  </div>
+
+  <h3 class="sub-h3">캠페인 현황 요약</h3>
+  <div class="crm-status">
+    <!-- 이미지 기반 캠페인 효율 테이블 -->
+    <div class="table-wrap" style="margin-bottom:20px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:90px;"></th>
+            <th>
+              상담신청 시도 독려
+            </th>
+            <th>
+              정보입력 독려
+            </th>
+            <th>
+              상담신청 완료 독려
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);font-size:12px;">현행</td>
+            <td style="font-size:12px;">리스/할부 분기 대응 O</td>
+            <td style="font-size:12px;">리스/할부 분기 대응 X</td>
+            <td style="font-size:12px;">리스/할부 분기 대응 X</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text-dim);font-size:12px;text-decoration:underline dashed rgba(255,92,106,0.5);">트리거</td>
+            <td style="font-size:12px;color:var(--accent2);">Main View</td>
+            <td style="font-size:12px;color:var(--accent2);">Calc Touch</td>
+            <td style="font-size:12px;color:var(--accent2);">Step1 submit</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text-dim);font-size:12px;">KPI</td>
+            <td style="font-size:12px;color:var(--accent2);">CTA Click</td>
+            <td style="font-size:12px;color:var(--accent2);">Step1 submit</td>
+            <td style="font-size:12px;color:var(--accent2);">Submit Complete</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--text-dim);font-size:12px;">발송 시</td>
+            <td style="font-size:12px;">60s</td>
+            <td style="font-size:12px;">10m</td>
+            <td style="font-size:12px;">2h</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text-dim);font-size:12px;text-decoration:underline dashed rgba(255,92,106,0.5);">❤️ 차량연동</td>
+            <td style="font-size:12px;line-height:1.7;">
+              <span style="color:var(--accent);font-weight:600;font-size:11px;display:block;">리스</span>
+              방금 본 {모델} ({가격}만원)<br>선수금 없이도 구매할 수 있어요<br>
+              <span style="color:var(--accent2);font-weight:600;font-size:11px;display:block;margin-top:6px;">론</span>
+              방금 본 {모델} ({가격}만원)<br>대출 얼마까지 나올지 조회할 수 있어요
+            </td>
+            <td style="font-size:12px;line-height:1.7;">계산해본 차 {type} 구매 시 월 {월납입금} 예상돼요<br>실제 납입금 조회 시 더 내려갈 수 있어요</td>
+            <td style="font-size:12px;line-height:1.7;">오늘 알아본 {모델}, 나의 월 납입액은?<br>정보 마저 입력하고 조회해보세요</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;color:var(--text-dim);font-size:12px;text-decoration:underline dashed rgba(255,92,106,0.5);">💔 차량미연동</td>
+            <td style="font-size:12px;line-height:1.7;">방금 본 차 대출 한도가 궁금하신가요?<br>첫차론에서 간편하게 조회할 수 있어요</td>
+            <td style="font-size:12px;line-height:1.7;">계산해본 차 {type} 구매 시 월 {월납입금} 예상돼요<br>실제 납입금 조회 시 더 내려갈 수 있어요</td>
+            <td style="font-size:12px;line-height:1.7;">오늘 알아본 차, 나의 월 납입액은?<br>정보 마저 입력하고 조회해보세요</td>
+          </tr>
+          <tr style="background:rgba(79,124,255,0.04);">
+            <td style="font-weight:700;font-size:12px;color:var(--text-dim);">%avg. open rate</td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:#fff;">13%</span>
+            </td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:#fff;">7%</span>
+            </td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:#fff;">7%</span>
+            </td>
+          </tr>
+          <tr style="background:rgba(79,124,255,0.06);">
+            <td style="font-weight:700;font-size:12px;color:var(--text-dim);">#avg. 전환</td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:var(--green);">33건</span>
+            </td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:var(--yellow);">12건</span>
+            </td>
+            <td>
+              <span style="font-family:'Space Mono',monospace;font-size:15px;font-weight:800;color:var(--red);">0건</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 캠페인별 상태 카드 -->
+    <div class="crm-item">
+      <div class="crm-trigger">
+        상담신청 시도 독려
+        <span>트리거: Main View · 60s</span>
+        <span style="color:var(--green);font-weight:600;">avg. 33건 / 오픈율 13%</span>
+      </div>
+      <div class="crm-body">
+        <h4>현재 유일한 전환 축 — 단 기여도 연속 하락</h4>
+        <p>발송 규모 대비 실제 전환 제한적. 최소한의 유지가치는 있으나 KPI 재정렬 필요.</p>
+      </div>
+    </div>
+    <div class="crm-item">
+      <div class="crm-trigger">
+        정보입력 독려
+        <span>트리거: Calc Touch · 10m</span>
+        <span style="color:var(--yellow);font-weight:600;">avg. 12건 / 오픈율 7%</span>
+      </div>
+      <div class="crm-body">
+        <h4>🚨 트리거 및 랜딩 개편 필요</h4>
+        <p>Calc Touch 단일 트리거 한계. <strong>'CTA 클릭 후 Step1 미제출'</strong>로 변경 시 가장 큰 볼륨 레버 확보 가능.</p>
+      </div>
+    </div>
+    <div class="crm-item">
+      <div class="crm-trigger">
+        상담신청 완료 독려
+        <span>트리거: Step1 submit · 2h</span>
+        <span style="color:var(--red);font-weight:600;">avg. 0건 / 오픈율 7%</span>
+      </div>
+      <div class="crm-body">
+        <h4>🚨 사실상 전환 0건 — 즉시 재구성 필요</h4>
+        <p>'2h 지연 발송' 폐기 • <strong>5~15분 내 리마인드</strong>로 재편. KPI를 '완료'만이 아닌 Step2/Step3 진입으로 분해.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-green alert">
+    <div>
+      <strong>CRM 레버 핵심: 트리거 모수 × 병목 구간</strong><br><br>
+      • CTA 클릭율 <strong>1.7%</strong> • Step1 전환율 <strong>0.7%</strong><br>
+      • 클릭 이후 <strong>절반 이상</strong>이 Step1 미진입 — 가장 큰 누수 구간<br>
+      • 현행 KPI '상담신청 완료'는 후행 지표로 조기 신호 포착 불가<br>
+      • ✅ <strong>KPI를 'Step1 제출'로 재정렬</strong>하여 CRM 액션과 성과 측정 동기화
+    </div>
+  </div>
+
+  <h3 class="sub-h3">개선 아이템</h3>
+  <div class="evidence-grid">
+    <div class="evidence-card" style="grid-column: 1 / -1;">
+      <h3>개선 ① — 정보입력 독려 캠페인 개편</h3>
+      <ul>
+        <li>
+          <strong>트리거 추가</strong>: CTA Click 발생 후 X분 내 Step1 미제출
+          <span style="display:inline-block;background:rgba(255,92,106,0.1);border:1px solid rgba(255,92,106,0.25);border-radius:4px;font-size:11px;color:var(--red);padding:1px 7px;margin-left:6px;">기존 Calc Touch 단일 → 병행</span>
+        </li>
+        <li>
+          <strong>랜딩</strong>: Step1 / 정보 이어 입력하기 기능 추가 제안
+        </li>
+        <li>
+          <strong>메시지</strong>: IAM 보조 채널 활용해 '남은 단계 수' 혹은 '예상 소요시간' 제시
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PART 4 ======== -->
+<section class="section" id="part4">
+  <div class="section-header">
+    <span class="section-num">PART 04</span>
+    <h2>통합 액션 아이템</h2>
+  </div>
+  
+  <!-- 운영·에셋 그룹 -->
+  <div class="action-category">
+    <div class="action-cat-label"><span>운영·에셋</span></div>
+    <div class="action-item-v2">
+      <div class="action-num">01</div>
+      <div>
+        <h4>💔 미연동 교체 주기 단축</h4>
+        <p>기존 3개월 • <strong>4~6주 단위</strong> CTA 에셋 교체로 CTR 하락 방어. CTR 8주 이동평균 기준 둔화가 빨라 3개월 주기는 너무 길 가능성 큼.</p>
+      </div>
+    </div>
+    <div class="action-item-v2">
+      <div class="action-num">02</div>
+      <div>
+        <h4>케이스별 운영 방식 이원화</h4>
+        <p>
+          <strong>❤️ 연동</strong> — 소수(2개) 에셋 고정 + 툴팁 분리(론=금리, 리스=한도) + 8~12주 교체<br>
+          <strong>💔 미연동</strong> — 4개 이상 롤링 + 신선도(CTR) 방어 우선 + 4~6주 교체
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product 그룹 -->
+  <div class="action-category">
+    <div class="action-cat-label"><span>Product</span></div>
+    <div class="action-item-v2">
+      <div class="action-num">03</div>
+      <div>
+        <h4>클릭 • Step1 구간 마찰 분해</h4>
+        <p>CTA 클릭 직후 <strong>'남은 단계 수'</strong> 표출로 심리적 허들 제거. CRM 랜딩 시 정보 이어 입력하기 기능으로 완료율 제고.</p>
+      </div>
+    </div>
+    <div class="action-item-v2">
+      <div class="action-num">04</div>
+      <div>
+        <h4>💔 미연동 계산기 UX 간소화</h4>
+        <p>필수 입력 최소화 + CTA 클릭 강조. 계산기 진입 허들(현재 수행률 17%)을 낮춰 Step1 전환 경로 확장.</p>
+      </div>
+    </div>
+    <div class="action-item-v2">
+      <div class="action-num">05</div>
+      <div>
+        <h4>리스 전용 계산기 고도화</h4>
+        <p>단순 월 납입금 계산을 넘어 이 차를 리스로 선택하는 게 왜 합리적인지 보여주는 도구로 정의. 구매 대비 리스 경제성·초기비용 비교 표시.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRM 그룹 -->
+  <div class="action-category">
+    <div class="action-cat-label"><span>CRM</span></div>
+    <div class="action-item-v2">
+      <div class="action-num">06</div>
+      <div>
+        <h4>정보입력 독려 캠페인 개편</h4>
+        <p>
+          <strong>트리거 추가</strong>: CTA Click 후 X분 내 Step1 미제출 (기존 Calc Touch 단일 병행)<br>
+          <strong>랜딩</strong>: Step1 + 정보 이어 입력하기 기능<br>
+          <strong>메시지</strong>: IAM 보조 채널 — '남은 단계 수' 혹은 '예상 소요시간' 제시
+        </p>
+      </div>
+    </div>
+    <div class="action-item-v2">
+      <div class="action-num">07</div>
+      <div>
+        <h4>리스 잠재고객 캠페인 신설</h4>
+        <p>
+          <strong>RT PUSH</strong>: 매일 오후 7시 | Lease High/Mid-Intent 세그먼트 — "4천만원 차량 월 부담 줄이기" 등 리스 강점 강조<br>
+          <strong>AB IAM</strong>: CCLoan main view 진입 시 | 고가 차량 니즈 명확하나 결제 수단 미확정 유저 리스 유도
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 세그먼트 그룹 -->
+
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ======== PART 5 ======== -->
+<section class="section" id="part5">
+  <div class="section-header">
+    <span class="section-num">PART 05</span>
+    <h2>첫차론 BM 연결 플로우</h2>
+  </div>
+
+  <div class="summary-box" style="margin-bottom:24px;">
+    <p>첫차론 상담신청 유저들의 <strong>[진행 상태 2차 상태값]</strong>, <strong>[고객 신청 정보]</strong>, <strong>[희망 차량 정보]</strong>를 기준으로 타기 / 차량광고 / 첫차론 리스 3개의 BM으로 연결하는 캠페인 플로우</p>
+  </div>
+
+  <!-- 판단 우선순위 요약 -->
+  <h3 class="sub-h3">판단 우선순위</h3>
+  <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
+
+    <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:rgba(255,92,106,0.06);border:1px solid rgba(255,92,106,0.2);border-radius:8px;">
+      <span style="font-size:11px;font-weight:700;color:var(--red);background:rgba(255,92,106,0.12);border-radius:4px;padding:2px 8px;white-space:nowrap;margin-top:1px;">열 우선</span>
+      <div style="font-size:13px;color:var(--text);">
+        <strong style="color:var(--red);">① 승인불가</strong>
+        <span style="color:var(--text-dim);margin-left:8px;">모든 case</span>
+        <span style="margin:0 6px;color:var(--text-muted);">→</span>
+        <span class="bm-tag bm-tagi">타기</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:rgba(255,208,96,0.05);border:1px solid rgba(255,208,96,0.15);border-radius:8px;">
+      <span style="font-size:11px;font-weight:700;color:var(--yellow);background:rgba(255,208,96,0.1);border-radius:4px;padding:2px 8px;white-space:nowrap;margin-top:1px;">행 우선</span>
+      <div style="font-size:13px;color:var(--text);display:flex;flex-direction:column;gap:4px;">
+        <div><strong style="color:var(--yellow);">② 나이 만 26세 미만</strong> <span style="color:var(--text-dim);margin-left:6px;">모든 case</span> <span style="margin:0 6px;color:var(--text-muted);">→</span><span class="bm-tag bm-tagi">타기</span></div>
+        <div><strong style="color:var(--yellow);">③ 차량가 0~500만원</strong> <span style="color:var(--text-dim);margin-left:6px;">모든 case</span> <span style="margin:0 6px;color:var(--text-muted);">→</span><span class="bm-tag bm-tagi">타기</span></div>
+        <div style="margin-top:4px;"><strong style="color:var(--yellow);">④ 차량가 4,000만원 이상</strong>
+          <span style="color:var(--text-dim);margin-left:6px;">승인불가</span><span style="margin:0 4px;color:var(--text-muted);">→</span><span class="bm-tag bm-tagi">타기</span>
+          <span style="color:var(--text-dim);margin-left:8px;">승인/거래거절</span><span style="margin:0 4px;color:var(--text-muted);">→</span><span class="bm-tag bm-ad">차량광고</span>
+          <span style="color:var(--text-dim);margin-left:8px;">그 외</span><span style="margin:0 4px;color:var(--text-muted);">→</span><span class="bm-tag bm-lease">첫차론 &gt; 리스</span>
+        </div>
+        <div><strong style="color:var(--yellow);">⑤ 차량가 501~3,999만원</strong>
+          <span style="color:var(--text-dim);margin-left:6px;">승인불가</span><span style="margin:0 4px;color:var(--text-muted);">→</span><span class="bm-tag bm-tagi">타기</span>
+          <span style="color:var(--text-dim);margin-left:8px;">그 외</span><span style="margin:0 4px;color:var(--text-muted);">→</span><span class="bm-tag bm-ad">차량광고</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 분기 플로우 시각화 -->
+  <h3 class="sub-h3">BM 연결 분기 플로우</h3>
+
+  <!-- 전체 플로우 SVG -->
+  <div style="overflow-x:auto;margin-bottom:28px;">
+  <svg viewBox="0 0 920 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:700px;height:auto;font-family:'Inter',sans-serif;">
+
+    <!-- ── 배경 ── -->
+    <rect width="920" height="680" fill="#0c0e14" rx="12"/>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- ENTRY: 첫차론 상담 종료                      -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="18" width="250" height="44" rx="8" fill="#1c2030" stroke="#4f7cff" stroke-width="1.5"/>
+    <text x="460" y="36" font-size="11" fill="#8890a8" text-anchor="middle" font-weight="600">트리거</text>
+    <text x="460" y="52" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">진행 상태 2차 상태값 변경</text>
+
+    <!-- entry → 승인불가 check -->
+    <line x1="460" y1="62" x2="460" y2="95" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- STEP 1: 승인불가? (열 우선)                  -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="95" width="250" height="44" rx="8" fill="#1c2030" stroke="#ff5c6a" stroke-width="1.5"/>
+    <text x="460" y="113" font-size="10" fill="#ff5c6a" text-anchor="middle" font-weight="700">① 열 조건</text>
+    <text x="460" y="129" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">2차 상태값 = 승인불가?</text>
+
+    <!-- YES → 타기 (오른쪽 직선) -->
+    <line x1="585" y1="117" x2="680" y2="117" stroke="#ff5c6a" stroke-width="1.5"/>
+    <polygon points="680,113 690,117 680,121" fill="#ff5c6a"/>
+    <text x="628" y="111" font-size="10" fill="#ff5c6a" text-anchor="middle">YES</text>
+    <!-- 타기 박스 -->
+    <rect x="690" y="98" width="100" height="38" rx="6" fill="rgba(34,211,160,0.12)" stroke="#22d3a0" stroke-width="1.5"/>
+    <text x="740" y="112" font-size="10" fill="#22d3a0" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="740" y="127" font-size="13" fill="#22d3a0" text-anchor="middle" font-weight="800">타기</text>
+
+    <!-- NO → 아래 -->
+    <line x1="460" y1="139" x2="460" y2="166" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="470" y="158" font-size="10" fill="#4a5270">NO</text>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- STEP 2: 나이 만 26세 미만?                   -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="166" width="250" height="44" rx="8" fill="#1c2030" stroke="#ffd060" stroke-width="1.5"/>
+    <text x="460" y="184" font-size="10" fill="#ffd060" text-anchor="middle" font-weight="700">② 행 조건</text>
+    <text x="460" y="200" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">나이 만 26세 미만?</text>
+
+    <!-- YES → 타기 -->
+    <line x1="585" y1="188" x2="680" y2="188" stroke="#ffd060" stroke-width="1.5"/>
+    <polygon points="680,184 690,188 680,192" fill="#ffd060"/>
+    <text x="628" y="182" font-size="10" fill="#ffd060" text-anchor="middle">YES</text>
+    <rect x="690" y="169" width="100" height="38" rx="6" fill="rgba(34,211,160,0.12)" stroke="#22d3a0" stroke-width="1.5"/>
+    <text x="740" y="183" font-size="10" fill="#22d3a0" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="740" y="198" font-size="13" fill="#22d3a0" text-anchor="middle" font-weight="800">타기</text>
+
+    <!-- NO → 아래 -->
+    <line x1="460" y1="210" x2="460" y2="237" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="470" y="229" font-size="10" fill="#4a5270">NO</text>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- STEP 3: 차량가 0~500만원?                    -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="237" width="250" height="44" rx="8" fill="#1c2030" stroke="#ffd060" stroke-width="1.5"/>
+    <text x="460" y="255" font-size="10" fill="#ffd060" text-anchor="middle" font-weight="700">③ 행 조건</text>
+    <text x="460" y="271" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">차량가 0~500만원?</text>
+
+    <!-- YES → 타기 -->
+    <line x1="585" y1="259" x2="680" y2="259" stroke="#ffd060" stroke-width="1.5"/>
+    <polygon points="680,255 690,259 680,263" fill="#ffd060"/>
+    <text x="628" y="253" font-size="10" fill="#ffd060" text-anchor="middle">YES</text>
+    <rect x="690" y="240" width="100" height="38" rx="6" fill="rgba(34,211,160,0.12)" stroke="#22d3a0" stroke-width="1.5"/>
+    <text x="740" y="254" font-size="10" fill="#22d3a0" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="740" y="269" font-size="13" fill="#22d3a0" text-anchor="middle" font-weight="800">타기</text>
+
+    <!-- NO → 아래 -->
+    <line x1="460" y1="281" x2="460" y2="308" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="470" y="300" font-size="10" fill="#4a5270">NO</text>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- STEP 4: 차량가 4,000만원 이상?              -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="308" width="250" height="44" rx="8" fill="#1c2030" stroke="#ffd060" stroke-width="1.5"/>
+    <text x="460" y="326" font-size="10" fill="#ffd060" text-anchor="middle" font-weight="700">④ 행 조건</text>
+    <text x="460" y="342" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">차량가 4,000만원 이상?</text>
+
+    <!-- NO → 아래 (501~3,999) -->
+    <line x1="460" y1="352" x2="460" y2="500" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="470" y="430" font-size="10" fill="#4a5270">NO</text>
+
+    <!-- YES → 분기 시작 (왼쪽으로) -->
+    <line x1="335" y1="330" x2="240" y2="330" stroke="#ffd060" stroke-width="1.5"/>
+    <text x="290" y="324" font-size="10" fill="#ffd060" text-anchor="middle">YES</text>
+
+    <!-- 왼쪽 분기 박스 (배경) -->
+    <rect x="20" y="384" width="280" height="154" rx="8" fill="rgba(255,208,96,0.03)" stroke="rgba(255,208,96,0.12)" stroke-width="1"/>
+    <text x="32" y="400" font-size="10" fill="#ffd060" font-weight="600">4,000만원 이상 — 2차 상태값별 분기</text>
+
+    <!-- 수직 분기선 -->
+    <line x1="240" y1="330" x2="240" y2="395" stroke="#ffd060" stroke-width="1.5"/>
+
+    <!-- 분기1: 승인/거래거절 -->
+    <line x1="240" y1="395" x2="130" y2="395" stroke="#ffd060" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <line x1="130" y1="395" x2="130" y2="415" stroke="#ffd060" stroke-width="1.2"/>
+    <rect x="30" y="415" width="200" height="38" rx="6" fill="#1a1e2e" stroke="rgba(255,208,96,0.25)" stroke-width="1"/>
+    <text x="130" y="430" font-size="10" fill="#8890a8" text-anchor="middle">2차 상태값 =</text>
+    <text x="130" y="445" font-size="11" fill="#e8eaf0" text-anchor="middle" font-weight="600">승인 / 거래거절</text>
+    <line x1="130" y1="453" x2="130" y2="473" stroke="#a090ff" stroke-width="1.5"/>
+    <polygon points="126,473 130,482 134,473" fill="#a090ff"/>
+    <rect x="55" y="482" width="150" height="38" rx="6" fill="rgba(123,92,250,0.12)" stroke="#7b5cfa" stroke-width="1.5"/>
+    <text x="130" y="496" font-size="10" fill="#a090ff" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="130" y="511" font-size="13" fill="#a090ff" text-anchor="middle" font-weight="800">차량광고</text>
+
+    <!-- 분기2: 그 외 (고객거절·연락불가 등) -->
+    <line x1="240" y1="395" x2="310" y2="395" stroke="#ffd060" stroke-width="1.2" stroke-dasharray="4,3"/>
+    <line x1="310" y1="395" x2="310" y2="415" stroke="#ffd060" stroke-width="1.2"/>
+    <rect x="215" y="415" width="200" height="38" rx="6" fill="#1a1e2e" stroke="rgba(255,208,96,0.25)" stroke-width="1"/>
+    <text x="315" y="430" font-size="10" fill="#8890a8" text-anchor="middle">2차 상태값 =</text>
+    <text x="315" y="445" font-size="11" fill="#e8eaf0" text-anchor="middle" font-weight="600">고객 거절 / 연락 불가</text>
+    <line x1="315" y1="453" x2="315" y2="473" stroke="#4f7cff" stroke-width="1.5"/>
+    <polygon points="311,473 315,482 319,473" fill="#4f7cff"/>
+    <rect x="215" y="482" width="200" height="38" rx="6" fill="rgba(79,124,255,0.12)" stroke="#4f7cff" stroke-width="1.5"/>
+    <text x="315" y="496" font-size="10" fill="#4f7cff" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="315" y="511" font-size="13" fill="#4f7cff" text-anchor="middle" font-weight="800">첫차론 &gt; 리스</text>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- STEP 5: 차량가 501~3,999만원 (기본)          -->
+    <!-- ──────────────────────────────────────────── -->
+    <rect x="335" y="500" width="250" height="44" rx="8" fill="#1c2030" stroke="#ffd060" stroke-width="1.5"/>
+    <text x="460" y="518" font-size="10" fill="#ffd060" text-anchor="middle" font-weight="700">⑤ 행 조건 (해당 없으면 기본)</text>
+    <text x="460" y="534" font-size="12" fill="#e8eaf0" text-anchor="middle" font-weight="700">차량가 501~3,999만원</text>
+
+    <!-- 오른쪽 분기 박스 (배경) -->
+    <rect x="600" y="488" width="290" height="120" rx="8" fill="rgba(255,208,96,0.03)" stroke="rgba(255,208,96,0.12)" stroke-width="1"/>
+    <text x="614" y="505" font-size="10" fill="#ffd060" font-weight="600">501~3,999만원 — 2차 상태값별 분기</text>
+
+    <line x1="585" y1="522" x2="608" y2="522" stroke="#ffd060" stroke-width="1.5"/>
+
+    <!-- 분기 수직선 -->
+    <line x1="745" y1="508" x2="745" y2="522" stroke="#ffd060" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <line x1="608" y1="522" x2="882" y2="522" stroke="#ffd060" stroke-width="1.2" stroke-dasharray="4,3"/>
+
+    <!-- 승인불가 -->
+    <line x1="660" y1="522" x2="660" y2="542" stroke="#ff5c6a" stroke-width="1.2"/>
+    <rect x="610" y="542" width="100" height="34" rx="5" fill="#1a1e2e" stroke="rgba(255,92,106,0.25)" stroke-width="1"/>
+    <text x="660" y="556" font-size="10" fill="#8890a8" text-anchor="middle">승인불가</text>
+    <line x1="660" y1="576" x2="660" y2="592" stroke="#22d3a0" stroke-width="1.5"/>
+    <polygon points="656,592 660,601 664,592" fill="#22d3a0"/>
+    <rect x="610" y="601" width="100" height="34" rx="5" fill="rgba(34,211,160,0.10)" stroke="#22d3a0" stroke-width="1.5"/>
+    <text x="660" y="614" font-size="10" fill="#22d3a0" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="660" y="627" font-size="12" fill="#22d3a0" text-anchor="middle" font-weight="800">타기</text>
+
+    <!-- 그 외 -->
+    <line x1="830" y1="522" x2="830" y2="542" stroke="#a090ff" stroke-width="1.2"/>
+    <rect x="780" y="542" width="100" height="34" rx="5" fill="#1a1e2e" stroke="rgba(123,92,250,0.25)" stroke-width="1"/>
+    <text x="830" y="556" font-size="10" fill="#8890a8" text-anchor="middle">그 외</text>
+    <line x1="830" y1="576" x2="830" y2="592" stroke="#a090ff" stroke-width="1.5"/>
+    <polygon points="826,592 830,601 834,592" fill="#a090ff"/>
+    <rect x="780" y="601" width="100" height="34" rx="5" fill="rgba(123,92,250,0.12)" stroke="#7b5cfa" stroke-width="1.5"/>
+    <text x="830" y="614" font-size="10" fill="#a090ff" text-anchor="middle" font-weight="700">BM 연결</text>
+    <text x="830" y="627" font-size="12" fill="#a090ff" text-anchor="middle" font-weight="800">차량광고</text>
+
+    <!-- ── 우측 세로선 (타기 박스 3개 연결) ── -->
+    <line x1="790" y1="117" x2="870" y2="117" stroke="#22d3a0" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.4"/>
+    <line x1="790" y1="188" x2="870" y2="188" stroke="#22d3a0" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.4"/>
+    <line x1="790" y1="259" x2="870" y2="259" stroke="#22d3a0" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.4"/>
+    <line x1="870" y1="117" x2="870" y2="259" stroke="#22d3a0" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- ── 범례 ── -->
+    <rect x="20" y="648" width="880" height="22" rx="4" fill="rgba(255,255,255,0.02)"/>
+    <rect x="30" y="653" width="12" height="12" rx="2" fill="rgba(34,211,160,0.25)" stroke="#22d3a0" stroke-width="1"/>
+    <text x="47" y="662" font-size="10" fill="#22d3a0">타기</text>
+    <rect x="100" y="653" width="12" height="12" rx="2" fill="rgba(123,92,250,0.2)" stroke="#7b5cfa" stroke-width="1"/>
+    <text x="117" y="662" font-size="10" fill="#a090ff">차량광고</text>
+    <rect x="200" y="653" width="12" height="12" rx="2" fill="rgba(79,124,255,0.2)" stroke="#4f7cff" stroke-width="1"/>
+    <text x="217" y="662" font-size="10" fill="#4f7cff">첫차론 &gt; 리스</text>
+    <line x1="340" y1="659" x2="365" y2="659" stroke="#252a3a" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="370" y="662" font-size="10" fill="#4a5270">조건 분기</text>
+    <text x="500" y="662" font-size="10" fill="#4a5270">* 2차 상태값: 고객 거절 / 연락 불가 / 승인 불가 / 승인·거래거절</text>
+
+  </svg>
+  </div>
+
+  <!-- Braze 캠페인 구현 스펙 테이블 -->
+  <h3 class="sub-h3">Braze 캠페인 구현 스펙</h3>
+  <div class="table-wrap" style="margin-bottom:28px;">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:80px;">캠페인 그룹</th>
+          <th>segment filter</th>
+          <th>트리거</th>
+          <th>KPI</th>
+          <th>랜딩</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 승인불가 그룹 -->
+        <tr style="background:rgba(255,92,106,0.04);">
+          <td rowspan="1" style="font-weight:700;color:var(--text-dim);font-size:12px;">승인불가<br><span style="font-size:10px;font-weight:400;color:var(--text-muted);">열 우선</span></td>
+          <td style="font-size:12px;">상담 종료</td>
+          <td style="font-size:12px;color:var(--accent2);">2차 상태값 = 승인불가</td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <!-- 고객거절 그룹 -->
+        <tr>
+          <td rowspan="4" style="font-weight:700;color:var(--text-dim);font-size:12px;vertical-align:top;padding-top:10px;">고객 거절<br><span style="font-size:10px;font-weight:400;color:var(--text-muted);">행 조건 순차</span></td>
+          <td style="font-size:12px;">상담 종료 + <strong>만 26세 미만</strong></td>
+          <td rowspan="4" style="font-size:12px;color:var(--accent2);vertical-align:top;padding-top:10px;">2차 상태값 = 고객 거절</td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>0~500만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>4,000만원 이상</strong></td>
+          <td style="font-size:12px;">첫차론 → 첫차론_리스 독려</td>
+          <td><span class="bm-tag bm-lease">CCLoan submit step1 user</span></td>
+        </tr>
+        <tr>
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>501~3,999만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 차량광고 독려</td>
+          <td><span class="bm-tag bm-ad">차량정보 기반 catalog</span></td>
+        </tr>
+        <!-- 연락불가 그룹 -->
+        <tr style="background:rgba(255,208,96,0.03);">
+          <td rowspan="4" style="font-weight:700;color:var(--text-dim);font-size:12px;vertical-align:top;padding-top:10px;">연락 불가<br><span style="font-size:10px;font-weight:400;color:var(--text-muted);">행 조건 순차</span></td>
+          <td style="font-size:12px;">상담 종료 + <strong>만 26세 미만</strong></td>
+          <td rowspan="4" style="font-size:12px;color:var(--accent2);vertical-align:top;padding-top:10px;">2차 상태값 = 연락 불가</td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr style="background:rgba(255,208,96,0.03);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>0~500만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr style="background:rgba(255,208,96,0.03);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>4,000만원 이상</strong></td>
+          <td style="font-size:12px;">첫차론 → 첫차론_리스 독려</td>
+          <td><span class="bm-tag bm-lease">CCLoan submit step1 user</span></td>
+        </tr>
+        <tr style="background:rgba(255,208,96,0.03);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>501~3,999만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 차량광고 독려</td>
+          <td><span class="bm-tag bm-ad">차량정보 기반 catalog</span></td>
+        </tr>
+        <!-- 승인/거래거절 그룹 -->
+        <tr style="background:rgba(79,124,255,0.04);">
+          <td rowspan="4" style="font-weight:700;color:var(--text-dim);font-size:12px;vertical-align:top;padding-top:10px;">승인/거래거절<br><span style="font-size:10px;font-weight:400;color:var(--text-muted);">행 조건 순차</span></td>
+          <td style="font-size:12px;">상담 종료 + <strong>만 26세 미만</strong></td>
+          <td rowspan="4" style="font-size:12px;color:var(--accent2);vertical-align:top;padding-top:10px;">2차 상태값 = 승인/거래거절</td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr style="background:rgba(79,124,255,0.04);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>0~500만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 타기 독려</td>
+          <td><span class="bm-tag bm-tagi">타기 랜딩</span></td>
+        </tr>
+        <tr style="background:rgba(79,124,255,0.04);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>4,000만원 이상</strong></td>
+          <td style="font-size:12px;">첫차론 → 차량광고 독려</td>
+          <td><span class="bm-tag bm-ad">차량정보 기반 catalog</span></td>
+        </tr>
+        <tr style="background:rgba(79,124,255,0.04);">
+          <td style="font-size:12px;">상담 종료 + 차량가 <strong>501~3,999만원</strong></td>
+          <td style="font-size:12px;">첫차론 → 차량광고 독려</td>
+          <td><span class="bm-tag bm-ad">차량정보 기반 catalog</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</section>
+
+
+</main>
+</body>
+</html>

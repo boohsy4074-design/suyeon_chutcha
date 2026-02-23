@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>캠페인 오픈율 대시보드</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #151820;
+    --border: #1e2330;
+    --c1: #4f9cf9;
+    --c2: #f9a84f;
+    --c3: #4ff9b8;
+    --c4: #f94f7c;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --up: #4ff9b8;
+    --down: #f94f7c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+
+  .header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+
+  .chart-wrap.full {
+    grid-column: 1 / -1;
+  }
+
+  .chart-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .chart-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  canvas {
+    max-height: 220px;
+  }
+
+  .full canvas {
+    max-height: 280px;
+  }
+
+  /* stat strip */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .stat-card:nth-child(1)::before { background: var(--c1); }
+  .stat-card:nth-child(2)::before { background: var(--c2); }
+  .stat-card:nth-child(3)::before { background: var(--c3); }
+  .stat-card:nth-child(4)::before { background: var(--c4); }
+
+  .stat-campaign {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+    color: #fff;
+  }
+
+  .stat-badge {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .badge-down { background: rgba(249,79,124,0.15); color: var(--down); }
+  .badge-up { background: rgba(79,249,184,0.15); color: var(--up); }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding: 0 2px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>캠페인 오픈율 분석</h1>
+  <p>2026.01.26 — 2026.02.16 · 주차별 Open Rate & 첫주 대비 등락</p>
+</div>
+
+<!-- stat cards -->
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-campaign">입찰 독려<br>_생애 최초</div>
+    <div class="stat-row">
+      <span class="stat-val">3.4%</span>
+      <span class="stat-badge badge-down">−53%</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-campaign">인기 차량<br>출품 안내</div>
+    <div class="stat-row">
+      <span class="stat-val">3.5%</span>
+      <span class="stat-badge badge-down">−49%</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-campaign">입찰 독려<br>_최신 낙찰 CA</div>
+    <div class="stat-row">
+      <span class="stat-val">13.5%</span>
+      <span class="stat-badge badge-down">−50%</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-campaign">입찰 독려<br>_최빈 입찰 CA</div>
+    <div class="stat-row">
+      <span class="stat-val">9.9%</span>
+      <span class="stat-badge badge-down">−16%</span>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c1)"></div>생애 최초</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c2)"></div>인기 차량 출품</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c3)"></div>최신 낙찰 CA</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c4)"></div>최빈 입찰 CA</div>
+</div>
+
+<div class="grid">
+  <!-- Open Rate trend -->
+  <div class="chart-wrap full">
+    <div class="chart-label">Open Rate Trend</div>
+    <div class="chart-title">주차별 오픈율 (%)</div>
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <!-- 등락 bar chart -->
+  <div class="chart-wrap full">
+    <div class="chart-label">vs. Week 1</div>
+    <div class="chart-title">운영 첫주 대비 등락 (%p)</div>
+    <canvas id="barChart"></canvas>
+  </div>
+</div>
+
+<script>
+const weeks = ['2026-01-26\n(W1)', '2026-02-02\n(W2)', '2026-02-09\n(W3)', '2026-02-16\n(W4)'];
+const shortWeeks = ['W1 (01/26)', 'W2 (02/02)', 'W3 (02/09)', 'W4 (02/16)'];
+
+const campaigns = [
+  { label: '생애 최초', color: '#4f9cf9', openRate: [7.1, 5.0, 3.4, 3.4], delta: [0, -30, -52, -53] },
+  { label: '인기 차량 출품', color: '#f9a84f', openRate: [6.7, 4.8, 4.0, 3.5], delta: [0, -29, -41, -49] },
+  { label: '최신 낙찰 CA', color: '#4ff9b8', openRate: [27.1, 15.7, 16.9, 13.5], delta: [0, -42, -38, -50] },
+  { label: '최빈 입찰 CA', color: '#f94f7c', openRate: [11.8, 12.9, 10.6, 9.9], delta: [0, 10, -10, -16] },
+];
+
+Chart.defaults.font.family = "'Noto Sans KR', sans-serif";
+Chart.defaults.color = '#6b7280';
+
+// Line chart
+const lineCtx = document.getElementById('lineChart').getContext('2d');
+new Chart(lineCtx, {
+  type: 'line',
+  data: {
+    labels: shortWeeks,
+    datasets: campaigns.map(c => ({
+      label: c.label,
+      data: c.openRate,
+      borderColor: c.color,
+      backgroundColor: c.color + '18',
+      pointBackgroundColor: c.color,
+      pointRadius: 5,
+      pointHoverRadius: 7,
+      borderWidth: 2.5,
+      tension: 0.35,
+      fill: false,
+    }))
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1e2330',
+        borderColor: '#2a3040',
+        borderWidth: 1,
+        titleColor: '#e8eaf0',
+        bodyColor: '#9ca3af',
+        padding: 12,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1e2330' },
+        ticks: { color: '#6b7280', font: { size: 12, family: "'DM Mono', monospace" } }
+      },
+      y: {
+        grid: { color: '#1e2330' },
+        ticks: {
+          color: '#6b7280',
+          font: { size: 12, family: "'DM Mono', monospace" },
+          callback: v => v + '%'
+        },
+        min: 0,
+      }
+    }
+  }
+});
+
+// Bar chart (grouped, only W2~W4)
+const barCtx = document.getElementById('barChart').getContext('2d');
+const barWeeks = ['W2 (02/02)', 'W3 (02/09)', 'W4 (02/16)'];
+
+new Chart(barCtx, {
+  type: 'bar',
+  data: {
+    labels: barWeeks,
+    datasets: campaigns.map(c => ({
+      label: c.label,
+      data: c.delta.slice(1),
+      backgroundColor: c.delta.slice(1).map(v => v >= 0 ? c.color + 'cc' : c.color + '88'),
+      borderColor: c.color,
+      borderWidth: 1.5,
+      borderRadius: 4,
+    }))
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1e2330',
+        borderColor: '#2a3040',
+        borderWidth: 1,
+        titleColor: '#e8eaf0',
+        bodyColor: '#9ca3af',
+        padding: 12,
+        callbacks: {
+          label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y > 0 ? '+' : ''}${ctx.parsed.y}%`
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: '#1e2330' },
+        ticks: { color: '#6b7280', font: { size: 12, family: "'DM Mono', monospace" } }
+      },
+      y: {
+        grid: { color: '#1e2330' },
+        ticks: {
+          color: '#6b7280',
+          font: { size: 12, family: "'DM Mono', monospace" },
+          callback: v => (v > 0 ? '+' : '') + v + '%'
+        },
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
